@@ -219,17 +219,20 @@ function Stat({ label, value, sub, color }) {
 /* ---------------------------------------------------------
    DATA (mock, espelhando o painel original)
 --------------------------------------------------------- */
-const LITOGRAFIA = [
-  { label: "ENV5", value: 64867 },
-  { label: "ENV6", value: 55193 },
+const IMPRESSORAS = [
   { label: "LITO4", value: 52755 },
   { label: "LITO5", value: 51059 },
   { label: "LITO2", value: 33444 },
-  { label: "ENV1", value: 30625 },
   { label: "LITO6", value: 10651 },
+];
+const ENVERNIZADEIRAS = [
+  { label: "ENV5", value: 64867 },
+  { label: "ENV6", value: 55193 },
+  { label: "ENV1", value: 30625 },
   { label: "ENV3", value: 9691 },
 ];
-const LITO_MAX = Math.max(...LITOGRAFIA.map((d) => d.value));
+const IMPRESSORAS_MAX = Math.max(...IMPRESSORAS.map((d) => d.value));
+const ENVERNIZADEIRAS_MAX = Math.max(...ENVERNIZADEIRAS.map((d) => d.value));
 
 const MANUTENCAO = [
   { label: "LITO6", value: 48, flag: "CRÍTICO" },
@@ -273,6 +276,9 @@ export default function App() {
   const hh = String(time.getHours()).padStart(2, "0");
   const mm = String(time.getMinutes()).padStart(2, "0");
   const ss = String(time.getSeconds()).padStart(2, "0");
+  const dateLabel = time
+    .toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" })
+    .replace(".", "");
 
   return (
     <div
@@ -297,20 +303,23 @@ export default function App() {
       `}</style>
 
       {/* TOP BAR */}
+   
       <div
         className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5"
         style={{ borderBottom: `1px solid ${COLORS.border}`, background: "#0C1526" }}
       >
         <div className="flex items-center gap-3">
-          <div
-            className="w-9 h-9 rounded-sm flex items-center justify-center font-bold text-sm"
-            style={{ background: COLORS.gold, color: "#0A1220", fontFamily: "Oswald, sans-serif" }}
-          >
-            IF
-          </div>
+          
+          {/* IMAGEM DA PASTA PUBLIC */}
+          <img 
+            src="/LOGO CINBAL-INCO.png" 
+            alt="Logo Incoflandres" 
+            className="w-36 h-auto object-contain"
+          />
+          
           <div>
             <div
-              className="text-[20px] font-semibold tracking-[0.02em]"
+              className="text-[25px] font-semibold tracking-[0.02em]"
               style={{ fontFamily: "Oswald, sans-serif" }}
             >
               Gestão Industrial
@@ -336,10 +345,10 @@ export default function App() {
             <span style={{ color: COLORS.textFaint }}>:{ss}</span>
           </div>
           <div
-            className="text-[11.5px] px-2.5 py-1 rounded-[2px]"
+            className="text-[11.5px] px-2.5 py-1 rounded-[2px] capitalize"
             style={{ background: COLORS.panelAlt, border: `1px solid ${COLORS.border}`, color: COLORS.textMuted }}
           >
-            12 ago 2026
+            {dateLabel}
           </div>
         </div>
       </div>
@@ -352,7 +361,16 @@ export default function App() {
           border: `1px solid ${COLORS.border}`,
         }}
       >
-        <div className="relative grid grid-cols-1 md:grid-cols-[auto_1px_1fr] gap-6 md:gap-8 p-6 items-center">
+        <div className="relative px-6 pt-5 flex items-center gap-2">
+          <span className="w-1 h-4 rounded-full" style={{ background: COLORS.gold }} />
+          <h1
+            className="text-[13px] font-semibold uppercase tracking-[0.16em]"
+            style={{ color: COLORS.goldBright, fontFamily: "Oswald, sans-serif" }}
+          >
+            Central de Controle Operacional
+          </h1>
+        </div>
+        <div className="relative grid grid-cols-1 md:grid-cols-[auto_1px_1fr] gap-6 md:gap-8 p-6 pt-4 items-center">
           <div className="flex items-center gap-6">
             <Gauge value={49} label="Índice de OEE" size={168} big good={75} warn={50} />
             <div>
@@ -391,19 +409,39 @@ export default function App() {
         <Panel icon={Factory} title="Litografia" tone="steel" className="lg:row-span-2">
           <div>
             <div
-              className="text-[10.5px] uppercase tracking-[0.1em] mb-3"
+              className="text-[12px] uppercase tracking-[0.1em] mb-3"
               style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif" }}
             >
-              Quantidade produzida por linha
+              Impressoras · quantidade produzida
             </div>
             <div className="flex flex-col gap-2.5">
-              {LITOGRAFIA.map((d) => (
+              {IMPRESSORAS.map((d) => (
                 <BarRow
                   key={d.label}
                   label={d.label}
                   value={d.value}
-                  max={LITO_MAX}
+                  max={IMPRESSORAS_MAX}
                   color={COLORS.steel}
+                  format={(v) => v.toLocaleString("pt-BR")}
+                />
+              ))}
+            </div>
+          </div>
+          <div style={{ borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 14 }}>
+            <div
+              className="text-[12px] uppercase tracking-[0.1em] mb-3"
+              style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif" }}
+            >
+              Envernizadeiras · quantidade produzida
+            </div>
+            <div className="flex flex-col gap-2.5">
+              {ENVERNIZADEIRAS.map((d) => (
+                <BarRow
+                  key={d.label}
+                  label={d.label}
+                  value={d.value}
+                  max={ENVERNIZADEIRAS_MAX}
+                  color={COLORS.gold}
                   format={(v) => v.toLocaleString("pt-BR")}
                 />
               ))}
@@ -516,7 +554,7 @@ export default function App() {
       <div className="flex items-center gap-1.5 justify-center pb-6 opacity-60">
         <Radio size={11} style={{ color: COLORS.textFaint }} />
         <span className="text-[10px]" style={{ color: COLORS.textFaint }}>
-          Paienl Gerencial · Grupo Incoflandres
+          CMC & Qualidade · Grupo Incoflandres
         </span>
       </div>
     </div>
