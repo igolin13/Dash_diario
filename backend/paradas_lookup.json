@@ -1,0 +1,2234 @@
+[
+  {
+    "Detalhe de status":"AGUARDANDO MECÂNICO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"BLANQUETA PEGANDO NA PINÇA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"COLAR CORREIA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"DESENTUPIR TUBO ÁGUA GELADEIRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"ESTICAR CORRENTES DOS MARTELOS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NA COMUNICAÇÃO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"LUBRIFICAR CORRENTE MARTELOS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"LUBRIFICAR ESTEIRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MANGUEIRA DE AR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MANUTENÇÃO DA ROLAGEM",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA DUBLANDO O TRABALHO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA FORA DO PONTO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MECÂNICO REGULANDO A MÁQUINA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MECÂNICO VISTORIANDO A ESTEIRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MONTAGEM DA ESTRUTURA DA ESTUFA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MONTANDO QUADRO DE MOLHA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MONTAR CILINDRO CONTRA-PRESSÃO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"PROB. PRESSÃO DO ROLO BORRACHA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"PROBLEMAS DE PRESSÃO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"QUEDA DE AR COMPRIMIDO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REGULANDO PINCA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REGULAR GARRA (CACHORRINHO)",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ACOPLAM. ROLO BORRACHA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ACOPLAMENTO PUMAFLEX",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ALIMENTADOR DE FOLHAS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CHAVETA DA MESA INSP.",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CILINDRO ANILOX",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CILINDRO CONTRAPRESSÃO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CORREIA DA MESA SAÍDA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CORRENT REDUTOR TRAÇÃO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CORRENTE DA GARRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CORRENTE DA UV",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CORRENTE DO EMPILHADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CORRENTE REDUTOR TRAÇÃO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR EIXO DA BARRACA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR EIXO DA ESTEIRA NA SAÍDA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR EIXO EXPELID. F.VIRGEM",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR EMPILHADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR EMPURRADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ENGRENAGEM CX TRANSMIS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ENGRENAGEM DA ENV.",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ESQUADRO FIXO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ESQUADRO MÓVEL",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ESTEIRA DE GRAMPOS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ESTOJO DA FACA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR FACA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR MANGUEIRA AR COMPRIMID",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR MANGUEIRA DO FELTRO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR MÁQ DE LAVAR GRAMPOS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR MARTELOS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR MESA REJEITO DE FOLHAS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR PINÇAS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR PISTÃO DA CHUPETA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR PISTÃO DA ESTEIRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR PISTÃO DO MOLHADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR PROT. LÃ DO QUEIMADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR RÉGUA LATERAL DA MESA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ROLDANAS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ROLETES SAÍDA ESTUFA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ROLO BRIDGE",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ROLO ENTINTADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ROLO MOLHADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ROLO MESA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR SISTEMA DE EXAUSTÃO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR SISTEMA DE VÁCUO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR SWEEP (TRAVADO)",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR TENSOR DA CORRENTE",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR TRANSMISSÃO DA ESTEIRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR TUBULAÇÃO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR VALV CIL CONTRAPRESSÃO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR VAZAMENTO DE ÓLEO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR\/TROCAR BOMBA DE VÁCUO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR\/TROCAR BOMBA SOLVENTE",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR\/TROCAR BOMBA VZ\/ESMALT",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR BOMBA ESM\/VZ (TUBUL)",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARO NO ROLO ALIMENTADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"RETIRAR ELOS DA ESTEIRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TOMADOR DE TINTA TRAVADO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR CHUPETA DO ALIMENTADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR CORREIA DA MESA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR CORREIA DO ELETROIMÃ",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR CORREIA DOS IMPULSORES",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR CORREIA DO ENFRENADO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR ENGRENAGEM",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR MANG. BOMBA VZ\/ESMALTE",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR MOLA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR PARAFUSO DO ACOMPLAMENTO DA EMBREAGEM",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR PARAFUSO DO CILINDRO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR PARAFUSO DO MANCAL",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR PARAFUSO ESQUADRO FIXO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR POLIA DO EIXO CORREIAS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR ROLAMENTO DO MANCAL",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR ROLAMENTO EIXO CORREIA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR ROLDANAS SAÍDA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR VÁLVULA DO ROLO PONTE",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"VIBRAÇÃO NA GUIA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"VIBRAÇÃO NO ROLO DE CAMADA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ROLETES DA ENTRADA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR TALHA ELÉTRICA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR EIXO DA ESTEIRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO DESLIGAR GERADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CÂMERA DECOSTAR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CÂMERA COATSTAR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO ELETRÔNICO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"CONFIGURAR BARBOMETRO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"CORREIA NA SAÍDA ESTUFA DESARM",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"CURTO CIRCUITO NA SAÍDA ESTUFA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"DESARMANDO ROLO D'AGUA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"ESTEIRA NÃO LIGA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA ACOPLAMENTO DA ROLAGEM",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA GERAL",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA MESA DA ENVERNIZADEIRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA MICRO GRADE DE PROTEÇÃO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NA ENVERNIZADEIRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NA IHM (TUBULAÇÃO)",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NA LÂMPADA 01",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NA LÂMPADA 02",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NA LÂMPADA 06",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NA LÂMPADA 07",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NA LÂMPADA 08",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NA REDE",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NA UV EXTERNA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NAS UV'S",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NO CIRCULADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NO EMPILHADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALTA DE AR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FORNO BLOQUEADO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"INST DO SENSOR ÚLTIMA FOLHA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"INSTALAR BARBÔMETRO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"LIGAR BARBÔMETRO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA DANDO BARBA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA DESARMANDO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA DESARMANDO 1ª UNID",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA DESARMANDO 2ª UNID",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA DESARMANDO 3ª UNID",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA DESARMANDO 4ª UNID",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA DESARMANDO (PAINEL)",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA DESARMANDO (ENVERN)",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA DESARMANDO (ESTUFA)",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA FORA DE SINCRONISMO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA NÃO LIGA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MÁQUINA NÃO REFERENCIANDO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MONITOR DO TINTEIRO NÃO LIGA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"PIST DOS ROLOS TINTA Ñ DESARMA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"PROBLEMA C\/ IMÃS NA SAÍDA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"PROBLEMA MOTOR RECIRC. ZONA 1",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ASPIRADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR BARBÔMETRO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR BARRACA DA IMPRESSORA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR BARRACA SAIDA ESTUFA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR BOMBA DE VÁCUO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR BOMBA VERNIZ\/ESMALTE",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR BOTÃO DE STOP",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CNC",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CONTADOR FOLHAS SAÍDA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CORREIA DO ENFRENADO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR DISJUNTOR DO MOTOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ELEVADOR ALIMENTADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR EMBREAGEM DA ROLARIA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ENFRENADO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR EXPELIDOR FOLHA DUPLA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR GELADEIRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR GERADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR MOLHADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR PÓS QUEIMA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR QUEIMADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR SENSOR CILIND BORRACHA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR SENSOR CONTRA-PRESSÃO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR SENSOR DE FOLHA VIRGEM",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR SENSOR ELEVADOR SAÍDA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR SENSOR FOLHAS DUPLAS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR SOPRADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR TINTEIRO ELETRÔNICO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR VIRADOR DE FARDOS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR\/TROCAR MOTOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TESTE RTO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR SENSOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"UNIDADE NÃO LIGA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCA DE ILUMINAÇÃO (CABINE)",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR SENSOR DE VERNIZ",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"AG. TEMPERATURA (MANUTENÇÃO)",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR GELADEIRA (LITO)",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"LIGAR MAQ. LAVAR GRAMPOS",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MANUTENÇÃO NA ESTEIRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MANUTENÇÃO NOS EMPILHADORES",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MANUTENÇÃO NOS ROLETES DO EMPILHADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"QUEDA ENERGIA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARO NO CARRO TRANSPORTADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"DESARMANDO ROLO D AGUA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NAS UV S",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"VERIF. CIRCULAÇÃO DE AR ESTUFA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"MAQUINA NÃO LIGAVA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR CHAVETA ENGRENAGEM ALIM",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR MOTOR DA MESA ESTUFA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR PARAFUSO DO FELTRO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"DESENTUPIR TUBO AGUA GELADEIRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"ESC. AGARRANDO NO ACION ROL 1",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR REJEITO COATSTAR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR REJEITO DECOSTAR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR RTO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR AR CONDICIONADO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARO NO RTO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"CRATERA PROBL. MÁQ.",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REGULAR ESQUADRO (MM)",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CHAVE CORR SAIDA ESTUF",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR CILINDRO DA CHAPA 1ª",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR SUPORTE DO FELTRO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARO NA ANTEPARA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARO NA ESTEIRA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARO NO EMPILHADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"TROCAR SENSOR DE LUBRIFICAÇÃO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARO MECÂNICO RTO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR EIXO DO ALIMENTADOR",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"AJUSTE NA ESTRUTURA",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"AJUSTE NOS SENSORES",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FALHA SISTEMA ELETRICO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"SETUP POS PARADA PELA PRODUÇÃO",
+    "Análise":"MANUTENÇÃO CORRETIVA"
+  },
+  {
+    "Detalhe de status":"FOLHAS AMARELANDO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"RECONTAR FOLHAS",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCA DE ROLO (PONTEIRA L.OPR)",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCA DE ROLO (PONTEIRA L.OPT)",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCA DE FARDO ENV 1 (NR-12)",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"AG. TEMPERATURA (INÍCIO TURNO)",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"INVERTER BLANQUETAS",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LAVAR BLANQUETAS",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LIMPAR CILINDRO CONTRA-PRESSÃO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"RECUPERANDO BLANQUETA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR BLANQUETA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR CALÇO DA BLANQUETA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"AJUSTE CÂMERA COATSTAR",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"AJUSTE CÂMERA DECOSTAR",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO GRAVAR CHAPA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"CHAPA ENGORDURANDO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"CHAPA PEGANDO FORÇA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LAVAR CHAPA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"REGULAR CHAPA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR CALÇO DA CHAPA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR CHAPA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LAVAR CHAPA\/BLANQUETA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"APRESENTANDO RESÍDUO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LAVAR CILINDRO DE CONTRA PRESSÃO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"CILINDRO\/FACA ENVERNIZADEIRA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LAVAR RESERVA DO CILINDRO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LIMPAR BACIA E TROCAR SOLVENTE",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LIMPAR CILINDRO DE BORRACHA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LIXAR E REGULAR FACA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LIXAR FACA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"MARCA NO CILINDRO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"RECUPERAR CILINDRO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"REGULAR FACA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"RETIFICAR CILINDRO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TESTANDO RESERVA DO CILINDRO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TESTE DE RESERVA DO CILINDRO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCA DE CILINDRO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR CILINDRO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR CILINDRO (10 MINUTOS)",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR FACA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR FACA DIANTEIRA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR FACA DO ANILOX",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR FACA E FELTRO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR FACA TRASEIRA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR FILTRO DE VERNIZ",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR SOLVENTE",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR VERNIZ (LOTE)",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR\/ENCAPAR FELTRO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR\/LIMPAR ROLO ANILOX",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"ACERTO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"GRAMPOS ABRASIVOS",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"GUIAS ABRASIVAS",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"REGULAGEM ROLO DADOR\/BATEDOR",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"ROLOS DE TINTA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"ROLOS DO MOLHADOR",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"ROLOS ENVERNIZADEIRA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"PRIMEIRA CARTELA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"RENOVAÇÃO DE CARTELA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"FIM DE PARADA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"FOLHAS FORA DE POSICIONAMENTO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"GRAMPOS EMPENADOS",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"AG. ALTERAÇÃO NO ARQUIVO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"AG. GRAVAR CHAPA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"CHAPA COM FALHAS NO GRAFISMO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"CHAPA SEM REFERÊNCIA DE ACERTO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"PONTOS DE SUJEIRA NA CHAPA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"PROVA DIGITAL # DA IMPRESSÃO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"RETÍCULA DIFERENTE DO PADRÃO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LIGAR EQUIPAMENTOS",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LIMPEZA DE RESERVA\/LAVAGEM DE ROLO COM SOLVENTE",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LIMPEZA EMBAIXO DA MÁQUINA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LIMPEZA FORA DE PROGRAMAÇÃO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"VAZANDO VERNIZ",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"AJUSTE DE RESERVA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"CALIBRAR TINTEIRO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"COMPLETANDO ÁGUA RADIADOR UVS",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"CONFERINDO GELADEIRA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"CONFERIR AJUSTE DE MÁQUINA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"CONFERIR PONTO MÁQUINA (BARBA)",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"CONFERIR RESERVA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"ELIMINAR MANCHAS",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"FLS AGARRANDO (ELETROIMÃ SAÍDA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"FLS AGARRANDO (GRAMPOS SAÍDA)",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"FOLHAS AGARRANDO (EMPIL SAÍDA)",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"FOLHAS AGARRANDO (MESA SAÍDA)",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"FOLHAS AGARRANDO ENTRADA MÁQ",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"FOLHAS AGARRANDO SAÍDA MÁQ",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"FOLHAS SUBINDO NA ROLAGEM",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"INVERTER CORES DAS UNIDADES",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LIMPAR GUIAS E CORREIAS",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"MELHORANDO ENCAIXE",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"PROBLEMA NO ROLETE (ENTRADA)",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"REGULAGEM DE MÁQUINA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"REGULANDO ALIMENTADOR",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"REGULANDO SAÍDA DA MÁQUINA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"REGULANDO SENSOR DUPLA FOLHA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCA DAS CHUPETAS",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCA DE FARDO NA ENTRADA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCA DE FARDO NA SAÍDA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"VERIFICAR CAMADA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"VERIFICAR VISUAL DA FOLHA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"DESLOCAMENTO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"ELIMINAR RISCOS E MANCHAS",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"ACERTO CORPO 12OZ EM PRODUÇÃO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"ACERTO CORPO 7OZ EM PRODUÇÃO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"ACERTO DE FORMATO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"ACERTO DE RESERVA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"ACERTO DE RESERVA (GABARITO)",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"REGULANDO CARREGAÇÃO DE INSUMO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"REGULAR MÁQUINA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"REGULANDO SAIDA DA ESTUFA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TEMPERATURA DA CABINE ELEVADA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TESTE SENSOR FOLHA DUPLA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TESTE SENSOR FOLHA ÚMIDA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TESTE SENSOR FOLHA VIRGEM",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"DESCRISTALIZAR A ROLAGEM",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LAVAR ROLARIA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LAVAR ROLO MOLHADOR",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"MANUTENÇÃO NA ROLARIA DE TINTA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"MONTAR ROLARIA DE TINTA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"REGULAR ROLO MOLHADOR",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR ROLO 16",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR ROLO DE TINTA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR ROLO MOLHADOR",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCAR ROLOTEX",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"VER.\/REG. PRES.FAIXA MOLHADOR",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"VER.\/REG. PRES.FAIXA ROLARIA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"ACERTO DE TONALIDADE",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"FL METÁL. COM DIF. ACABAMENTO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"PROVA NA ESTUFA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TINTA FORA DO PADRÃO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TONALIDADE",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"VARIAÇÃO CAM. DO ESM. BRANCO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"CHAPA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"GELADEIRA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"ROLARIA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"VELATURA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"VERIFICAR GELADEIRA.",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"LIMPAR CILINDRO DE CONTRA PRESSAO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"INSPECIONANDO FARDOS",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"TROCA DE TURNO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO ÚLTIMO FARDO",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"AG. RET DO FARDO DEV CALORIA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"AG. SUBIR\/DESCER TEMPERATURA",
+    "Análise":"OPERACIONAL"
+  },
+  {
+    "Detalhe de status":"PARADA NÃO IDENTIFICADA",
+    "Análise":"EXTERNO"
+  },
+  {
+    "Detalhe de status":"TROCA FARDO SAÍDA (1 MAGEADOR)",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO AGITAR VERNIZ",
+    "Análise":"ABASTECIMENTO"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO ALMOXARIFADO",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"AG. TEMPERATURA (LIGHT)",
+    "Análise":"EXTERNO"
+  },
+  {
+    "Detalhe de status":"PASSANDO FOLHAS NA PRESSÃO",
+    "Análise":"RETRABALHO"
+  },
+  {
+    "Detalhe de status":"SUSPENSO",
+    "Análise":"RETRABALHO"
+  },
+  {
+    "Detalhe de status":"EQUIPE DESLOCADA P\/ OUTRA MÁQ",
+    "Análise":"SEM PROGRAMAÇÃO"
+  },
+  {
+    "Detalhe de status":"EQUIPE DESLOCADA P\/ SELEÇÃO",
+    "Análise":"SEM PROGRAMAÇÃO"
+  },
+  {
+    "Detalhe de status":"EQUIPE INCOMPLETA \/ SEM EQUIPE",
+    "Análise":"SEM PROGRAMAÇÃO"
+  },
+  {
+    "Detalhe de status":"JOGO DO BRASIL",
+    "Análise":"SEM PROGRAMAÇÃO"
+  },
+  {
+    "Detalhe de status":"RECLAMAÇÃO DE ODOR",
+    "Análise":"SEM PROGRAMAÇÃO"
+  },
+  {
+    "Detalhe de status":"MÁQUINA LAVAR GRAMPOS NÃO LIGA",
+    "Análise":"MANUT CORRETIVA GRAMPOS"
+  },
+  {
+    "Detalhe de status":"VERNIZ COM ESPUMAS",
+    "Análise":"EXTERNO"
+  },
+  {
+    "Detalhe de status":"AG. SAIR FOLHAS APLIC. 2 LADO",
+    "Análise":"ABASTECIMENTO"
+  },
+  {
+    "Detalhe de status":"AG. VIRAR FARDO",
+    "Análise":"ABASTECIMENTO"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO CARPINTARIA",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO EMBALAGEM",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO EMPILHADEIRA",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO FLS DE OUTRA LINHA",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO INSUMO",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO MALA\/ACERTO",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"ESQUADRO FL SCROLL INVERTIDO",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"FARDO SEM ETIQUETA",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"FLUXO DE FLS PROCURANDO FARDOS",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"LOCALIZAR\/AMARRAR FARDO",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"REQUISITANDO MAT. NO ALMOX.",
+    "Análise":"ABASTECIMENTO"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO LANÇAMENTO DE OP NO SISTEMA",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"BATENDO MALA",
+    "Análise":"SEM EXPEDIENTE"
+  },
+  {
+    "Detalhe de status":"LAVAR BLANQUETAS (PROGRAMADA)",
+    "Análise":"PROGRAMADA"
+  },
+  {
+    "Detalhe de status":"LAVAR RESERVA (PROGRAMADA)",
+    "Análise":"PROGRAMADA"
+  },
+  {
+    "Detalhe de status":"LIMPAR CONTRA PRESSÃO (PROG)",
+    "Análise":"PROGRAMADA"
+  },
+  {
+    "Detalhe de status":"INSTALAÇÃO DO AERODUTO",
+    "Análise":"PROGRAMADA"
+  },
+  {
+    "Detalhe de status":"CONCESSIONÁRIA LIGHT",
+    "Análise":"EXTERNO"
+  },
+  {
+    "Detalhe de status":"FALTA DE ENERGIA",
+    "Análise":"EXTERNO"
+  },
+  {
+    "Detalhe de status":"GERADOR",
+    "Análise":"EXTERNO"
+  },
+  {
+    "Detalhe de status":"LIMPEZA DAS PEÇAS (SET UP)",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"LIMPEZA FINAL DO TURNO",
+    "Análise":"SEM EXPEDIENTE"
+  },
+  {
+    "Detalhe de status":"LIMPEZA INÍCIO DO TURNO",
+    "Análise":"SEM EXPEDIENTE"
+  },
+  {
+    "Detalhe de status":"LIMPEZA CORRETIVA",
+    "Análise":"SEM EXPEDIENTE"
+  },
+  {
+    "Detalhe de status":"CHECK LIST",
+    "Análise":"MANUTENÇÃO PREVENTIVA"
+  },
+  {
+    "Detalhe de status":"MANUTENÇÃO PREVENTIVA",
+    "Análise":"MANUTENÇÃO PREVENTIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ROTOR (PROBLEMA EXTERNO)",
+    "Análise":"MANUTENÇÃO PREVENTIVA"
+  },
+  {
+    "Detalhe de status":"REVISÃO NA ESTEIRA",
+    "Análise":"MANUTENÇÃO PREVENTIVA"
+  },
+  {
+    "Detalhe de status":"CALIBRAR GRAMPOS",
+    "Análise":"MANUT PREV GRAMPOS"
+  },
+  {
+    "Detalhe de status":"DESEMPENAR GRAMPOS",
+    "Análise":"MANUT PREV GRAMPOS"
+  },
+  {
+    "Detalhe de status":"LIMPAR \/ LAVAR GRAMPOS",
+    "Análise":"MANUTENÇÃO PREVENTIVA"
+  },
+  {
+    "Detalhe de status":"REPARAR ROTOR",
+    "Análise":"MANUT CORRETIVA GRAMPOS"
+  },
+  {
+    "Detalhe de status":"TROCA DE GRAMPOS",
+    "Análise":"MANUT PREV GRAMPOS"
+  },
+  {
+    "Detalhe de status":"TROCAR GRAMPOS",
+    "Análise":"MANUT PREV GRAMPOS"
+  },
+  {
+    "Detalhe de status":"LUBRIFICAR ESTEIRA (PÓS LAVAG)",
+    "Análise":"MANUT PREV GRAMPOS"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO FECHAMENTO DE OP",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO FLUXO DE FOLHAS",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO ORDEM TÉCNICA",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"CAPA DE FARDO",
+    "Análise":"PROGRAMADA"
+  },
+  {
+    "Detalhe de status":"CHUVA NA SAÍDA DA MÁQUINA",
+    "Análise":"EXTERNO"
+  },
+  {
+    "Detalhe de status":"DATAPAQ",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FARDO ACIDENTADO SAÍDA MÁQ",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FECHAMENTO DE OP",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"INCÊNDIO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"INCÊNDIO NA MÁQUINA",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"INOVAÇÃO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"VISITA (PINTURA NA FÁBRICA)",
+    "Análise":"PROGRAMADA"
+  },
+  {
+    "Detalhe de status":"MUDOU O ACERTO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"PREMIAÇÃO INOVAÇÃO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"PROBLEMA COM FULIGEM",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"PROBLEMAS COM INSETOS",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"RECUPERANDO FOLHAS (LAVANDO)",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"REUNIÃO COM SUPERVISOR",
+    "Análise":"EXTERNO"
+  },
+  {
+    "Detalhe de status":"SPECMETRIX",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"TREINAMENTO INOVAÇÃO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"TREINAMENTO SIPATMA",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"VERNIZ\/ESMALTE PINGANDO NA FL",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"VISITA DA DIRETORIA NA FABRICA",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FALHA NO PC FACTORY",
+    "Análise":"TECNOLOGIA DA INFORMAÇÃO (T.I)"
+  },
+  {
+    "Detalhe de status":"FALHA NA REDE (TUBULAÇÃO)",
+    "Análise":"TECNOLOGIA DA INFORMAÇÃO (T.I)"
+  },
+  {
+    "Detalhe de status":"PREVENTIVA\/MME",
+    "Análise":"MANUTENÇÃO PREVENTIVA"
+  },
+  {
+    "Detalhe de status":"ESMALTE ABRINDO CRATERAS",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"ESMALTE COM PROB. ALASTRAMENTO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"ESMALTE COM VISCOSIDADE ALTA",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"ESMALTE QUEBRANDO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FARDO CORRENDO (DESLIZANTE)",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FL AMASSADA PASSADA ANTERIOR",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FLS COM VARIACAO DE TAMANHO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHA VIRGEM AMASSADA",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHAS ABAULADAS",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHAS COLADAS",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHAS COM ADERÊNCIA RUIM",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHAS COM MANCHAS",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHAS COM MARCAS DE GRAMPO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHAS COM ÓLEO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHAS COM OXIDAÇÃO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHAS COM REBARBA",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHAS COM RESÍDUO DE FACA",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHAS COM RISCO OU VINCO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHAS COM SUJIDADE",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHAS COM VARIAÇÃO DE RESERVA",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FOLHAS MALA SATURADA",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"MANCHA NO VERNIZ",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"MIGRAÇÃO NO VERNIZ INTERNO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"PROBLEMAS COM FOLHAS\/ INSUMOS",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"REPELÊNCIA",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"RETIRAR FLS AMASSADAS DO FARDO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"ROSÁRIO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"TINTA EMULSIONANDO NO MOLHADOR",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"TINTA PRETO SELLER SEM ADERÊNC",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"TINTA SECANDO NA ROLAGEM",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"VERNIZ COM CRATERAS",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"VERNIZ ES510",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"VERNIZ SEM BRILHO (FOSCO)",
+    "Análise":"EXTERNO"
+  },
+  {
+    "Detalhe de status":"PROBLEMAS COM FULIGEM",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"FARDO DESALINHADO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"TINTA COM SUJIDADE",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"PRODUÇÃO",
+    "Análise":"PRODUÇÃO"
+  },
+  {
+    "Detalhe de status":"RADIÔMETRO",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"REFEIÇÃO",
+    "Análise":"REFEIÇÃO"
+  },
+  {
+    "Detalhe de status":"REVEZANDO HORÁRIO DE REFEIÇÃO",
+    "Análise":"REFEIÇÃO"
+  },
+  {
+    "Detalhe de status":"APLICANDO CALORIA",
+    "Análise":"RETRABALHO"
+  },
+  {
+    "Detalhe de status":"RECUPERAR BLANQUETA",
+    "Análise":"RETRABALHO"
+  },
+  {
+    "Detalhe de status":"REPASSE DE FOLHAS",
+    "Análise":"RETRABALHO"
+  },
+  {
+    "Detalhe de status":"RETRABALHO",
+    "Análise":"RETRABALHO"
+  },
+  {
+    "Detalhe de status":"SEM EXPEDIENTE",
+    "Análise":"SEM EXPEDIENTE"
+  },
+  {
+    "Detalhe de status":"SEM PROGRAMAÇÃO",
+    "Análise":"SEM PROGRAMAÇÃO"
+  },
+  {
+    "Detalhe de status":"REPARO NA ESTRUTURA",
+    "Análise":"PROGRAMADA"
+  },
+  {
+    "Detalhe de status":"SET UP (CORTE)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"BÁSICO (30 MINUTOS)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"COMPLETO (50 MINUTOS)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"COMPLETO BPA FREE (60 MINUTOS)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"COMPLETO ENV. 2 (60 MINUTOS)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"INTERMEDIÁRIO (45 MINUTOS)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"SETUP FORA DA PROGRAMACAO",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"BÁSICO LITO. 5 (40 MINUTOS)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"COMPLETO C\/ VZ (60 MINUTOS)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"COMPLETO C\/ VZ LITO 5 (70 MIN)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"COMPLETO LITO 3 (90 MIN)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"COMPLETO RAFT (90 MIN)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"COMPLETO LITO. 5 (60 MIN)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"COMPLETO ODERICH (70 MINUTOS)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"INTERMEDIÁRIO (40 MINUTOS)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"INTERMEDIÁRIO LITO. 5 (50 MIN)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"PRODUÇÃO RAFT",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"PRODUÇÃO PAMPEANO",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"PRODUÇÃO LATAL",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"PRODUÇÃO ITAMBÉ",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"ARTE NOVA",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"ESMALTE",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"FLEXPACK",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"FOLHAS METÁLICAS",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"NOVA FERRAMENTA",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"NOVA IMAGEM \/ IMPRESSÃO",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"PRIMEIRA PRODUÇÃO",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"TESTE BASTON",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"TESTE FORM ( FOTOLITO )",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"TESTE INT. ROBISON CROSUE",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"TESTE PARA CLIENTE",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"TESTE REVESTIMENTO",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"TINTA",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"VERNIZ",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"VERNIZ METLAC",
+    "Análise":"TESTE"
+  },
+  {
+    "Detalhe de status":"TROCA DE OP \/ PASSADA",
+    "Análise":"ABASTECIMENTO"
+  },
+  {
+    "Detalhe de status":"UPGRADE",
+    "Análise":"UPGRADE"
+  },
+  {
+    "Detalhe de status":"CABINE QUENTE (FALHA NO AR CONDICIONADO )",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"OUTROS (COLOCAR COMENTÁRIO)",
+    "Análise":"SEM EXPEDIENTE"
+  },
+  {
+    "Detalhe de status":"COMPLETO ALIM LITO5 (80 MIN)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"COMPLETO ALIMENT. (60 MINUTOS)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"COMPLETO ALIMENTÍCIO (70 MIN)",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"SET-UP",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"SETUP FORA DA PROGRAMAÇÃO",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"TEMPERATURA ALTA (CABINE)",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"TESTE SENSORES (QUALIDADE)",
+    "Análise":"PROGRAMADA"
+  },
+  {
+    "Detalhe de status":"REPARAR QUADRO DE MOLHA",
+    "Análise":"MANUT PREV GRAMPOS"
+  },
+  {
+    "Detalhe de status":"REPARAR MÁQ LAVAR GRAMPOS (BS)",
+    "Análise":"MANUT CORRETIVA GRAMPOS"
+  },
+  {
+    "Detalhe de status":"RETIFICANDO OP PCP",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"MANUT. ALEGA NAO ACION.",
+    "Análise":"FORA PROCESSO"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO O TI",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"ACERTO PÓS-SETUP",
+    "Análise":"SETUP"
+  },
+  {
+    "Detalhe de status":"AG. MATERIAL DO ALMOXARIFADO",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO PEÇAS SETUP",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"DISTRIBUIÇÃO DE VZ 10 MIN (ENV 6)",
+    "Análise":"PROGRAMADA"
+  },
+  {
+    "Detalhe de status":"FECHAR OP",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"LAVAGEM DE GRAMPOS CORRETIVA",
+    "Análise":"MANUT CORRETIVA GRAMPOS"
+  },
+  {
+    "Detalhe de status":"TESTE DE SWAB (FSSC 22000)",
+    "Análise":"PROGRAMADA"
+  },
+  {
+    "Detalhe de status":"TRABALHO SUSPENSO",
+    "Análise":"OUTROS SETORES"
+  },
+  {
+    "Detalhe de status":"REPARAR MAQ LAVAR GRAMPOS (BI)",
+    "Análise":"MANUT CORRETIVA GRAMPOS"
+  },
+  {
+    "Detalhe de status":"PROBLEMAS GERAIS NA MÁQUINA",
+    "Análise":"MANUT CORRETIVA GRAMPOS"
+  },
+  {
+    "Detalhe de status":"BLANQUETA (PROBLEMA EXTERNO)",
+    "Análise":"EXTERNO"
+  },
+  {
+    "Detalhe de status":"RETIRAR QUADRO MOLHA (PÓS LAV)",
+    "Análise":"MANUT PREV GRAMPOS"
+  },
+  {
+    "Detalhe de status":"RETIRAR ALETAS ENTRADA (EST)",
+    "Análise":"MANUT PREV GRAMPOS"
+  },
+  {
+    "Detalhe de status":"COLOCAR ALETAS ENTRADA (EST)",
+    "Análise":"MANUTENÇÃO PREVENTIVA"
+  },
+  {
+    "Detalhe de status":"MONTAGEM DO ROTOR",
+    "Análise":"MANUTENÇÃO PREVENTIVA"
+  },
+  {
+    "Detalhe de status":"FALHA NA IMPRESSÃO DE ETIQUETA",
+    "Análise":"PC FACTORY"
+  },
+  {
+    "Detalhe de status":"AGUARDANDO LANÇAMENTO",
+    "Análise":"PC FACTORY"
+  },
+  {
+    "Detalhe de status":"INSTALAÇÃO DE ESTRUTURA",
+    "Análise":"MANUTENÇÃO PREVENTIVA"
+  },
+  {
+    "Detalhe de status":"PARTIDA MAQ POS CHECKLIST",
+    "Análise":"MANUTENÇÃO PREVENTIVA"
+  },
+  {
+    "Detalhe de status":"PARTIDA DE MAQ POS PREV",
+    "Análise":"MANUTENÇÃO PREVENTIVA"
+  },
+  {
+    "Detalhe de status":"PREPARAÇÃO LAVAGEM DE GRAMPO",
+    "Análise":"MANUTENÇÃO PREVENTIVA"
+  },
+  {
+    "Detalhe de status":"SET UP (MANUTENÇÃO)",
+    "Análise":"MANUTENÇÃO PREVENTIVA"
+  }
+]

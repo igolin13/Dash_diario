@@ -19,6 +19,20 @@ LINHAS_EM_VERDE = {
     "LITOGRAFIA 6": 4200,
 }
 
+LINHA_ABREV = {
+    "Envernizadeira 1": "ENV1",
+    "Envernizadeira 2": "ENV2",
+    "Envernizadeira 3": "ENV3",
+    "Envernizadeira 4": "ENV4",
+    "Envernizadeira 5": "ENV5",
+    "Envernizadeira 6": "ENV6",
+    "LITOGRAFIA 2": "LITO2",
+    "LITOGRAFIA 3": "LITO3",
+    "LITOGRAFIA 4": "LITO4",
+    "LITOGRAFIA 5": "LITO5",
+    "LITOGRAFIA 6": "LITO6",
+}
+
 VELOCIDADE_PADRAO = {
     "Envernizadeira 1": 5000,
     "Envernizadeira 2": 3300,

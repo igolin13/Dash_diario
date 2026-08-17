@@ -27,7 +27,7 @@ Regras confirmadas:
 """
 import pandas as pd
 
-from linhas_em_verde import LINHAS_EM_VERDE
+from linhas_em_verde import LINHAS_EM_VERDE, LINHA_ABREV
 from categorizacao import status_da_fonte
 
 COLUNA_RECURSO = "Apelido Recurso"
@@ -161,6 +161,25 @@ def producao_esperada(df_tempo: pd.DataFrame) -> float:
             continue
         total += horas * velocidade
     return total
+
+
+# ---------- Produção por linha (painel Litografia) ----------
+def producao_por_linha(df_qtd: pd.DataFrame) -> dict:
+    """Quantidade Produzida por linha, já filtrado pras 8 linhas ativas
+    do dashboard e separado em impressoras (LITOGRAFIA) vs
+    envernizadeiras (Envernizadeira), com o rótulo abreviado (ENV1,
+    LITO2 etc.) usado no gráfico."""
+    df = df_qtd[df_qtd["Apelido Recurso"].isin(LINHAS_DASHBOARD)]
+    por_linha = df.groupby("Apelido Recurso")["Quantidade Produzida"].sum()
+
+    impressoras, envernizadeiras = [], []
+    for recurso, qtd in por_linha.items():
+        item = {"linha": LINHA_ABREV.get(recurso, recurso), "quantidade": float(qtd)}
+        (impressoras if recurso.startswith("LITOGRAFIA") else envernizadeiras).append(item)
+
+    impressoras.sort(key=lambda x: -x["quantidade"])
+    envernizadeiras.sort(key=lambda x: -x["quantidade"])
+    return {"impressoras": impressoras, "envernizadeiras": envernizadeiras}
 
 
 # ---------- Indicadores finais ----------
