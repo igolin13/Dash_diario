@@ -367,7 +367,7 @@ export default function App() {
             className="text-[13px] font-semibold uppercase tracking-[0.16em]"
             style={{ color: COLORS.goldBright, fontFamily: "Oswald, sans-serif" }}
           >
-            Central de Controle Operacional
+            Central de Controle Operacional - Produção
           </h1>
         </div>
         <div className="relative grid grid-cols-1 md:grid-cols-[auto_1px_1fr] gap-6 md:gap-8 p-6 pt-4 items-center">
