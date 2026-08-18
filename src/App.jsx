@@ -7,7 +7,7 @@ import { Panel } from "./components/Panel";
 import { Stat, EmptyState, BarRow } from "./components/Stat";
 import { FiltroData } from "./components/FiltroData";
 import { useApiResource } from "./hooks/useApiResource";
-import { fetchKpis, fetchProducaoPorLinha } from "./lib/api";
+import { fetchKpis, fetchProducaoPorLinha, fetchCorretivaPorLinha } from "./lib/api";
 
 /* ---------------------------------------------------------
    APP — Dash Diário Incoflandres
@@ -37,6 +37,12 @@ export default function App() {
     loading: loadingLinha,
     error: errorLinha,
   } = useApiResource(fetchProducaoPorLinha, dataSelecionada);
+
+  const {
+    data: corretivaLinha,
+    loading: loadingCorretiva,
+    error: errorCorretiva,
+  } = useApiResource(fetchCorretivaPorLinha, dataSelecionada);
 
   // Conversões pra percentual (a API devolve fração 0-1)
   const oeeValor = data?.oee?.valor != null ? data.oee.valor * 100 : null;
@@ -145,15 +151,15 @@ export default function App() {
             </h1>
           </div>
           {atualizadoEm && (
-            <span className="text-[14px]" style={{ color: COLORS.text }}>
-              Atualizado em {atualizadoEm.toLocaleTimeString("pt-BR")}
+            <span className="text-[11px]" style={{ color: COLORS.textFaint }}>
+              atualizado {atualizadoEm.toLocaleTimeString("pt-BR")}
             </span>
           )}
         </div>
 
         <div className="relative grid grid-cols-1 md:grid-cols-[auto_1px_1fr] gap-6 md:gap-8 p-6 pt-4 items-center">
           <div className="flex items-center gap-6">
-            <Gauge value={oeeValor} meta={oeeMeta} label="Índice de OEE" size={150} big />
+            <Gauge value={oeeValor} meta={oeeMeta} label="Índice de OEE" size={168} big />
             <div>
               {temVariacao && (
                 <div
@@ -213,10 +219,10 @@ export default function App() {
           ) : (
             <>
               <div>
-                <div className="text-[14px] uppercase tracking-[0.1em] mb-3" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                <div className="text-[12.5px] uppercase tracking-[0.1em] mb-3" style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif" }}>
                   Impressoras · quantidade produzida
                 </div>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2.5">
                   {impressoras.map((d) => (
                     <BarRow
                       key={d.linha}
@@ -230,10 +236,10 @@ export default function App() {
                 </div>
               </div>
               <div style={{ borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 14 }}>
-                <div className="text-[14px] uppercase tracking-[0.1em] mb-3" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                <div className="text-[12.5px] uppercase tracking-[0.1em] mb-3" style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif" }}>
                   Envernizadeiras · quantidade produzida
                 </div>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2.5">
                   {envernizadeiras.map((d) => (
                     <BarRow
                       key={d.linha}
@@ -255,7 +261,25 @@ export default function App() {
         </Panel>
 
         <Panel icon={Wrench} title="Manutenção" tone="red">
-          <EmptyState mensagem="Corretiva por linha ainda não tem endpoint próprio (hoje só temos o agregado das 8 linhas, no card 'Corretiva' acima)" />
+          {errorCorretiva ? (
+            <EmptyState mensagem={`Falha ao buscar corretiva por linha (${errorCorretiva})`} />
+          ) : !loadingCorretiva && (!corretivaLinha || corretivaLinha.length === 0) ? (
+            <EmptyState mensagem="Sem paradas corretivas registradas para essa data" />
+          ) : (
+            <div className="flex flex-col gap-2.5">
+              {corretivaLinha.map((d) => (
+                <BarRow
+                  key={d.linha}
+                  label={d.linha}
+                  value={d.percentual}
+                  max={Math.max(1, ...corretivaLinha.map((x) => x.percentual))}
+                  color={d.percentual >= 30 ? COLORS.red : COLORS.amber}
+                  format={(v) => `${v.toFixed(1).replace(".", ",")}%`}
+                  flag={d.percentual >= 30 ? "CRÍTICO" : undefined}
+                />
+              ))}
+            </div>
+          )}
         </Panel>
 
         <Panel icon={ShieldCheck} title="Qualidade" tone="gold" className="lg:row-span-2">

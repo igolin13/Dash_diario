@@ -91,8 +91,8 @@ export function Gauge({ value, meta, label, size = 148, big = false, invertido =
         {label}
       </span>
       {meta != null && (
-        <span className="text-[10.5px]" style={{ color: COLORS.textFaint }}>
-          meta {meta.toFixed(0)}%
+        <span className="text-[13.5px]" style={{ color: COLORS.textFaint }}>
+          Meta: {meta.toFixed(0)}%
         </span>
       )}
     </div>

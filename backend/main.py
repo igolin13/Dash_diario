@@ -13,7 +13,7 @@ from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 
 from database import fetch_base_quantidade, fetch_base_tempo
-from kpis import montar_kpis, debug_breakdown, producao_por_linha
+from kpis import montar_kpis, debug_breakdown, producao_por_linha, corretiva_por_linha
 
 app = FastAPI(title="Dash Diário — Incoflandres API")
 
@@ -66,6 +66,16 @@ def get_producao_por_linha(
     já filtrado pras 8 linhas ativas — alimenta o painel Litografia."""
     df_qtd = fetch_base_quantidade(data_inicio, data_fim)
     return producao_por_linha(df_qtd)
+
+
+@app.get("/api/corretiva-por-linha")
+def get_corretiva_por_linha(
+    data_inicio: date | None = Query(None),
+    data_fim: date | None = Query(None),
+):
+    """% de tempo em manutenção corretiva por linha — alimenta o painel Manutenção."""
+    df_tempo = fetch_base_tempo(data_inicio, data_fim)
+    return corretiva_por_linha(df_tempo)
 
 
 @app.get("/api/kpis/debug")

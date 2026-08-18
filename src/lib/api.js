@@ -28,3 +28,7 @@ export function fetchKpis(date) {
 export function fetchProducaoPorLinha(date) {
   return getJSON("/api/producao-por-linha", date);
 }
+
+export function fetchCorretivaPorLinha(date) {
+  return getJSON("/api/corretiva-por-linha", date);
+}

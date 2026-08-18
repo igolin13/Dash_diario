@@ -182,6 +182,25 @@ def producao_por_linha(df_qtd: pd.DataFrame) -> dict:
     return {"impressoras": impressoras, "envernizadeiras": envernizadeiras}
 
 
+# ---------- Corretiva por linha (painel Manutenção) ----------
+def corretiva_por_linha(df_tempo: pd.DataFrame) -> list:
+    """% do tempo em manutenção corretiva por linha (Análise Nova),
+    já filtrado pras 8 linhas ativas do dashboard."""
+    df = filtrar_linhas_dashboard(df_tempo)
+    total_por_linha = df.groupby("Apelido Recurso")["T.Decorrido (h)"].sum()
+    corretiva = df[df["Análise Nova"] == "MANUTENÇÃO CORRETIVA"]
+    corretiva_horas_por_linha = corretiva.groupby("Apelido Recurso")["T.Decorrido (h)"].sum()
+
+    resultado = []
+    for recurso, total in total_por_linha.items():
+        horas_corretiva = corretiva_horas_por_linha.get(recurso, 0.0)
+        pct = (horas_corretiva / total * 100) if total else 0.0
+        resultado.append({"linha": LINHA_ABREV.get(recurso, recurso), "percentual": round(pct, 2)})
+
+    resultado.sort(key=lambda x: -x["percentual"])
+    return resultado
+
+
 # ---------- Indicadores finais ----------
 def performance(df_qtd: pd.DataFrame, df_tempo: pd.DataFrame) -> float:
     esperada = producao_esperada(df_tempo)
