@@ -7,7 +7,7 @@ Rodar:
 Endpoint principal:
     GET /api/kpis?data_inicio=2026-08-01&data_fim=2026-08-14
 """
-from datetime import date
+from datetime import date, timedelta
 
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -32,7 +32,29 @@ def get_kpis(
 ):
     df_qtd = fetch_base_quantidade(data_inicio, data_fim)
     df_tempo = fetch_base_tempo(data_inicio, data_fim)
-    return montar_kpis(df_qtd, df_tempo)
+    kpis = montar_kpis(df_qtd, df_tempo)
+
+    # "vs. dia anterior" — réplica de Medida_OEE_Dia_Anterior (DATEADD -1 DAY)
+    # no BI original: variação é diferença em pontos percentuais, não % relativo.
+    # Envolto em try/except: se o dia anterior não tiver dado (ou o SQL
+    # falhar por qualquer motivo), o dia principal continua respondendo
+    # normalmente — só a comparação fica ausente.
+    kpis["oee_dia_anterior"] = None
+    if data_inicio and data_fim:
+        try:
+            dia_anterior = data_inicio - timedelta(days=1)
+            df_qtd_ant = fetch_base_quantidade(dia_anterior, dia_anterior)
+            df_tempo_ant = fetch_base_tempo(dia_anterior, dia_anterior)
+            oee_ontem = montar_kpis(df_qtd_ant, df_tempo_ant)["oee"]["valor"]
+            oee_hoje = kpis["oee"]["valor"]
+            kpis["oee_dia_anterior"] = {
+                "valor": oee_ontem,
+                "variacao_pp": (oee_hoje - oee_ontem) if (oee_hoje is not None and oee_ontem) else None,
+            }
+        except Exception as erro:
+            print(f"[api/kpis] Falha ao buscar dia anterior ({erro}); seguindo sem a comparação.")
+
+    return kpis
 
 
 @app.get("/api/producao-por-linha")

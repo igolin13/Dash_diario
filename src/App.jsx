@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Factory, Boxes, ShieldCheck, Wrench, ClipboardList, Radio, AlertCircle } from "lucide-react";
+import { Factory, Boxes, ShieldCheck, Wrench, ClipboardList, Radio, AlertCircle, TrendingUp, TrendingDown } from "lucide-react";
 
 import { COLORS, corPelaMeta } from "./components/colors";
 import { Gauge } from "./components/Gauge";
@@ -50,6 +50,11 @@ export default function App() {
   const percPerdas = data?.perc_perdas != null ? (data.perc_perdas * 100).toFixed(2).replace(".", ",") + "%" : null;
   const producaoTotal = data?.producao_total != null ? Math.round(data.producao_total).toLocaleString("pt-BR") : null;
 
+  // "vs. dia anterior" — vem da API (Medida_OEE_Dia_Anterior), nunca inventado
+  const variacaoPP = data?.oee_dia_anterior?.variacao_pp;
+  const temVariacao = variacaoPP != null && !Number.isNaN(variacaoPP);
+  const variacaoPositiva = temVariacao && variacaoPP >= 0;
+
   const impressoras = producaoLinha?.impressoras || [];
   const envernizadeiras = producaoLinha?.envernizadeiras || [];
   const impressorasMax = Math.max(1, ...impressoras.map((d) => d.quantidade));
@@ -95,17 +100,17 @@ export default function App() {
         </div>
 
         <div className="flex items-center gap-5">
+          <FiltroData dataSelecionada={dataSelecionada} onMudarData={setDataSelecionada} />
           <div className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full live-dot" style={{ background: error ? COLORS.red : COLORS.gold }} />
-            <span className="text-[10.5px] uppercase tracking-[0.14em]" style={{ color: error ? COLORS.red : COLORS.gold, fontFamily: "Oswald, sans-serif" }}>
+            <span className="text-[11.5px] uppercase tracking-[0.14em]" style={{ color: error ? COLORS.red : COLORS.gold, fontFamily: "Oswald, sans-serif" }}>
               {error ? "Sem conexão com a API" : "Ao vivo"}
             </span>
           </div>
-          <div className="font-mono text-[13px]" style={{ color: COLORS.text }}>
+          <div className="font-mono text-[14px]" style={{ color: COLORS.text }}>
             {hh}:{mm}
             <span style={{ color: COLORS.textFaint }}>:{ss}</span>
           </div>
-          <FiltroData dataSelecionada={dataSelecionada} onMudarData={setDataSelecionada} />
         </div>
       </div>
 
@@ -113,13 +118,13 @@ export default function App() {
       {error && (
         <div className="mx-5 mt-5 flex items-center gap-2.5 px-4 py-3 rounded-sm" style={{ background: `${COLORS.red}14`, border: `1px solid ${COLORS.red}55` }}>
           <AlertCircle size={16} style={{ color: COLORS.red }} />
-          <span className="text-[12.5px]" style={{ color: COLORS.text }}>
+          <span className="text-[13.5px]" style={{ color: COLORS.text }}>
             Não foi possível buscar os dados reais da API ({error}). Confere se o backend está rodando em{" "}
             <code className="font-mono">{import.meta.env.VITE_API_URL || "http://localhost:8000"}</code>.
           </span>
           <button
             onClick={recarregar}
-            className="ml-auto text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-[2px] shrink-0"
+            className="ml-auto text-[12px] uppercase tracking-wider px-2.5 py-1 rounded-[2px] shrink-0"
             style={{ background: `${COLORS.red}22`, color: COLORS.red, border: `1px solid ${COLORS.red}55` }}
           >
             Tentar de novo
@@ -135,22 +140,36 @@ export default function App() {
         <div className="relative px-6 pt-5 flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <span className="w-1 h-4 rounded-full" style={{ background: COLORS.gold }} />
-            <h1 className="text-[13px] font-semibold uppercase tracking-[0.16em]" style={{ color: COLORS.goldBright, fontFamily: "Oswald, sans-serif" }}>
+            <h1 className="text-[14.5px] font-semibold uppercase tracking-[0.16em]" style={{ color: COLORS.goldBright, fontFamily: "Oswald, sans-serif" }}>
               Central de Controle Operacional - Produção
             </h1>
           </div>
           {atualizadoEm && (
-            <span className="text-[10px]" style={{ color: COLORS.textFaint }}>
-              atualizado {atualizadoEm.toLocaleTimeString("pt-BR")}
+            <span className="text-[14px]" style={{ color: COLORS.text }}>
+              Atualizado em {atualizadoEm.toLocaleTimeString("pt-BR")}
             </span>
           )}
         </div>
 
         <div className="relative grid grid-cols-1 md:grid-cols-[auto_1px_1fr] gap-6 md:gap-8 p-6 pt-4 items-center">
           <div className="flex items-center gap-6">
-            <Gauge value={oeeValor} meta={oeeMeta} label="Índice de OEE" size={168} big />
+            <Gauge value={oeeValor} meta={oeeMeta} label="Índice de OEE" size={150} big />
             <div>
-              <p className="mt-1 text-[12.5px] max-w-[220px]" style={{ color: COLORS.textMuted }}>
+              {temVariacao && (
+                <div
+                  className="flex items-center gap-1.5 text-[12px] px-2 py-1 rounded-[2px] w-fit"
+                  style={{
+                    background: `${variacaoPositiva ? COLORS.green : COLORS.red}1A`,
+                    border: `1px solid ${variacaoPositiva ? COLORS.green : COLORS.red}55`,
+                    color: variacaoPositiva ? COLORS.green : COLORS.red,
+                  }}
+                >
+                  {variacaoPositiva ? <TrendingUp size={12} /> : <TrendingDown size={12} />}
+                  {variacaoPositiva ? "+" : ""}
+                  {(variacaoPP * 100).toFixed(1).replace(".", ",")}pp vs. dia anterior
+                </div>
+              )}
+              <p className="mt-3 text-[13.5px] max-w-[220px]" style={{ color: COLORS.textMuted }}>
                 Eficiência global do equipamento
                 {oeeMeta != null && ` — meta: ${oeeMeta.toFixed(0)}%`}
               </p>
@@ -194,10 +213,10 @@ export default function App() {
           ) : (
             <>
               <div>
-                <div className="text-[12px] uppercase tracking-[0.1em] mb-3" style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif" }}>
+                <div className="text-[14px] uppercase tracking-[0.1em] mb-3" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
                   Impressoras · quantidade produzida
                 </div>
-                <div className="flex flex-col gap-2.5">
+                <div className="flex flex-col gap-4">
                   {impressoras.map((d) => (
                     <BarRow
                       key={d.linha}
@@ -211,10 +230,10 @@ export default function App() {
                 </div>
               </div>
               <div style={{ borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 14 }}>
-                <div className="text-[12px] uppercase tracking-[0.1em] mb-3" style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif" }}>
+                <div className="text-[14px] uppercase tracking-[0.1em] mb-3" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
                   Envernizadeiras · quantidade produzida
                 </div>
-                <div className="flex flex-col gap-2.5">
+                <div className="flex flex-col gap-4">
                   {envernizadeiras.map((d) => (
                     <BarRow
                       key={d.linha}
@@ -250,7 +269,7 @@ export default function App() {
 
       <div className="flex items-center gap-1.5 justify-center pb-6 opacity-60">
         <Radio size={11} style={{ color: COLORS.textFaint }} />
-        <span className="text-[10px]" style={{ color: COLORS.textFaint }}>
+        <span className="text-[11px]" style={{ color: COLORS.textFaint }}>
           CMC & Qualidade · Grupo Incoflandres {loading && "· carregando..."}
         </span>
       </div>

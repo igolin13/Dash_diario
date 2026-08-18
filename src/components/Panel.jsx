@@ -21,7 +21,7 @@ export function Panel({ icon: Icon, title, tone = "steel", children, className =
           <Icon size={14} style={{ color: toneColor }} strokeWidth={2.25} />
         </div>
         <h2
-          className="text-[13px] font-semibold uppercase tracking-[0.12em]"
+          className="text-[14.5px] font-semibold uppercase tracking-[0.12em]"
           style={{ color: COLORS.text, fontFamily: "Oswald, sans-serif" }}
         >
           {title}

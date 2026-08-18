@@ -19,7 +19,7 @@ function describeArc(cx, cy, r, startAngle, endAngle) {
  * value / meta: em percentual (0-100). invertido: true quando menor é
  * melhor (ex: Corretiva).
  */
-export function Gauge({ value, meta, label, size = 132, big = false, invertido = false }) {
+export function Gauge({ value, meta, label, size = 148, big = false, invertido = false }) {
   const r = size / 2 - 14;
   const cx = size / 2;
   const cy = size / 2;
@@ -74,24 +74,24 @@ export function Gauge({ value, meta, label, size = 132, big = false, invertido =
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-0" style={{ top: big ? 18 : 10 }}>
           <span
-            className={`font-mono font-semibold ${big ? "text-4xl" : "text-xl"}`}
+            className={`font-mono font-semibold ${big ? "text-3xl" : "text-2xl"}`}
             style={{ color: temValor ? COLORS.text : COLORS.textFaint, letterSpacing: "-0.02em" }}
           >
             {temValor ? value.toFixed(1).replace(".0", "") : "—"}
-            <span className={big ? "text-lg" : "text-xs"} style={{ color: COLORS.textMuted }}>
+            <span className={big ? "text-xl" : "text-sm"} style={{ color: COLORS.textMuted }}>
               %
             </span>
           </span>
         </div>
       </div>
       <span
-        className="mt-1 uppercase text-[11px] tracking-[0.14em] font-medium"
+        className="mt-1 uppercase text-[12px] tracking-[0.14em] font-medium"
         style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}
       >
         {label}
       </span>
       {meta != null && (
-        <span className="text-[9.5px]" style={{ color: COLORS.textFaint }}>
+        <span className="text-[10.5px]" style={{ color: COLORS.textFaint }}>
           meta {meta.toFixed(0)}%
         </span>
       )}

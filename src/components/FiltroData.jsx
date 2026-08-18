@@ -2,25 +2,53 @@ import { Calendar } from "lucide-react";
 import { COLORS } from "./colors";
 import { formatarDataISO } from "../lib/api";
 
+function ehMesmoDia(a, b) {
+  return formatarDataISO(a) === formatarDataISO(b);
+}
+
 /**
- * Filtro de data: mostra a data selecionada e abre um <input type="date">
- * nativo pra trocar. "Voltar para hoje" aparece só quando não está em hoje.
+ * Três caixinhas: Hoje / Ontem / Escolher qualquer data do ano.
+ * Nenhuma trava — o backend aceita qualquer data com histórico no SQL.
  */
 export function FiltroData({ dataSelecionada, onMudarData }) {
   const hoje = new Date();
-  const ehHoje = formatarDataISO(dataSelecionada) === formatarDataISO(hoje);
+  const ontem = new Date(hoje);
+  ontem.setDate(hoje.getDate() - 1);
+
+  const isHoje = ehMesmoDia(dataSelecionada, hoje);
+  const isOntem = ehMesmoDia(dataSelecionada, ontem);
+
+  function estiloBox(ativo) {
+    return {
+      background: ativo ? `${COLORS.gold}22` : COLORS.panelAlt,
+      border: `1px solid ${ativo ? COLORS.gold : COLORS.border}`,
+      color: ativo ? COLORS.goldBright : COLORS.textMuted,
+    };
+  }
 
   return (
-    <div className="flex items-center gap-2">
-      <label
-        className="relative flex items-center gap-1.5 text-[11.5px] px-2.5 py-1 rounded-[2px] cursor-pointer capitalize"
-        style={{ background: COLORS.panelAlt, border: `1px solid ${COLORS.border}`, color: COLORS.textMuted }}
+    <div className="flex items-center gap-1.5">
+      <button
+        onClick={() => onMudarData(new Date())}
+        className="text-[12.5px] uppercase tracking-wider font-medium px-3 py-1.5 rounded-[2px] transition-colors"
+        style={estiloBox(isHoje)}
       >
-        <Calendar size={12} style={{ color: COLORS.textFaint }} />
-        {dataSelecionada.toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" }).replace(".", "")}
+        Hoje
+      </button>
+      <button
+        onClick={() => onMudarData(ontem)}
+        className="text-[12.5px] uppercase tracking-wider font-medium px-3 py-1.5 rounded-[2px] transition-colors"
+        style={estiloBox(isOntem)}
+      >
+        Ontem
+      </button>
+      <label
+        className="flex items-center gap-1.5 text-[12.5px] px-2.5 py-1.5 rounded-[2px] cursor-pointer font-mono transition-colors"
+        style={estiloBox(!isHoje && !isOntem)}
+      >
+        <Calendar size={13} />
         <input
           type="date"
-          className="absolute opacity-0 w-0 h-0"
           value={formatarDataISO(dataSelecionada)}
           max={formatarDataISO(hoje)}
           onChange={(e) => {
@@ -28,17 +56,10 @@ export function FiltroData({ dataSelecionada, onMudarData }) {
             const [ano, mes, dia] = e.target.value.split("-").map(Number);
             onMudarData(new Date(ano, mes - 1, dia));
           }}
+          className="bg-transparent outline-none cursor-pointer"
+          style={{ colorScheme: "dark", color: "inherit" }}
         />
       </label>
-      {!ehHoje && (
-        <button
-          onClick={() => onMudarData(new Date())}
-          className="text-[10.5px] uppercase tracking-wider px-2 py-1 rounded-[2px]"
-          style={{ background: `${COLORS.gold}1A`, border: `1px solid ${COLORS.gold}55`, color: COLORS.gold }}
-        >
-          Hoje
-        </button>
-      )}
     </div>
   );
 }
