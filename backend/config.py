@@ -16,12 +16,33 @@ DB_CONFIG = {
     "driver": os.getenv("DASH_DB_DRIVER", "ODBC Driver 18 for SQL Server"),
 }
 
+# Segunda conexão — mesmo servidor, schema diferente (base do Protheus,
+# usada só pelo painel de Estoque).
+DB_CONFIG_ESTOQUE = {
+    "host": os.getenv("DASH_DB_HOST", "srvdb-01"),
+    "port": int(os.getenv("DASH_DB_PORT", "1433")),
+    "schema": os.getenv("DASH_ESTOQUE_DB_SCHEMA", "PROTHEUS_PRD"),
+    "user": os.getenv("DASH_DB_USER", "consult"),
+    "password": os.getenv("DASH_DB_PASS", "consult"),
+    "driver": os.getenv("DASH_DB_DRIVER", "ODBC Driver 18 for SQL Server"),
+}
+
 VIEW_QUANTIDADE = "VW_BASE_QUANTIDADE"
 VIEW_TEMPO = "VW_BASE_TEMPO"
+VIEW_ESTOQUE = "VW_ESTOQUE"
 
 
 def build_connection_string() -> str:
     c = DB_CONFIG
+    return (
+        f"mssql+pyodbc://{c['user']}:{c['password']}@{c['host']}:{c['port']}/"
+        f"{c['schema']}?driver={c['driver'].replace(' ', '+')}"
+        f"&TrustServerCertificate=yes"
+    )
+
+
+def build_connection_string_estoque() -> str:
+    c = DB_CONFIG_ESTOQUE
     return (
         f"mssql+pyodbc://{c['user']}:{c['password']}@{c['host']}:{c['port']}/"
         f"{c['schema']}?driver={c['driver'].replace(' ', '+')}"

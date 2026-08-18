@@ -32,3 +32,16 @@ export function fetchProducaoPorLinha(date) {
 export function fetchCorretivaPorLinha(date) {
   return getJSON("/api/corretiva-por-linha", date);
 }
+
+/**
+ * Estoque não aceita data — a base é viva (sem histórico por dia),
+ * sempre reflete o momento atual. Por isso não usa getJSON (que exige
+ * data_inicio/data_fim).
+ */
+export async function fetchEstoqueVencido() {
+  const resp = await fetch(`${API_URL}/api/estoque-vencido`);
+  if (!resp.ok) {
+    throw new Error(`API respondeu ${resp.status} em /api/estoque-vencido`);
+  }
+  return resp.json();
+}

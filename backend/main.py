@@ -14,6 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from database import fetch_base_quantidade, fetch_base_tempo
 from kpis import montar_kpis, debug_breakdown, producao_por_linha, corretiva_por_linha
+from estoque import estoque_vencido
 
 app = FastAPI(title="Dash Diário — Incoflandres API")
 
@@ -76,6 +77,15 @@ def get_corretiva_por_linha(
     """% de tempo em manutenção corretiva por linha — alimenta o painel Manutenção."""
     df_tempo = fetch_base_tempo(data_inicio, data_fim)
     return corretiva_por_linha(df_tempo)
+
+
+@app.get("/api/estoque-vencido")
+def get_estoque_vencido():
+    """Estoque vencido por faixa de dias (30-60 / 60-90 / >90).
+
+    NÃO aceita data_inicio/data_fim — a base de estoque é viva (sem
+    histórico por dia), sempre reflete o momento atual."""
+    return estoque_vencido()
 
 
 @app.get("/api/kpis/debug")

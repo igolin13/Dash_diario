@@ -1,6 +1,6 @@
 import { COLORS } from "./colors";
 
-export function Panel({ icon: Icon, title, tone = "steel", children, className = "" }) {
+export function Panel({ icon: Icon, title, tone = "steel", children, className = "", badge }) {
   const toneColor = { steel: COLORS.steel, gold: COLORS.gold, red: COLORS.red }[tone];
   return (
     <section
@@ -26,6 +26,7 @@ export function Panel({ icon: Icon, title, tone = "steel", children, className =
         >
           {title}
         </h2>
+        {badge && <div className="ml-auto">{badge}</div>}
       </header>
       <div className="p-4 flex-1 flex flex-col gap-4">{children}</div>
     </section>

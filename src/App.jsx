@@ -7,7 +7,7 @@ import { Panel } from "./components/Panel";
 import { Stat, EmptyState, BarRow } from "./components/Stat";
 import { FiltroData } from "./components/FiltroData";
 import { useApiResource } from "./hooks/useApiResource";
-import { fetchKpis, fetchProducaoPorLinha, fetchCorretivaPorLinha } from "./lib/api";
+import { fetchKpis, fetchProducaoPorLinha, fetchCorretivaPorLinha, fetchEstoqueVencido } from "./lib/api";
 
 /* ---------------------------------------------------------
    APP — Dash Diário Incoflandres
@@ -43,6 +43,14 @@ export default function App() {
      error: errorCorretiva 
     } = useApiResource(fetchCorretivaPorLinha,dataSelecionada);
 
+  // Estoque é "vivo" (sem histórico por dia) — não depende da data
+  // selecionada no filtro, por isso passa uma dependência fixa (null).
+  const {
+    data: estoque,
+    loading: loadingEstoque,
+    error: errorEstoque,
+  } = useApiResource(fetchEstoqueVencido, null);
+
   // Conversões pra percentual (a API devolve fração 0-1)
   const oeeValor = data?.oee?.valor != null ? data.oee.valor * 100 : null;
   const oeeMeta = data?.oee?.meta != null ? data.oee.meta * 100 : null;
@@ -64,6 +72,9 @@ export default function App() {
   const envernizadeiras = producaoLinha?.envernizadeiras || [];
   const impressorasMax = Math.max(1, ...impressoras.map((d) => d.quantidade));
   const envernizadeirasMax = Math.max(1, ...envernizadeiras.map((d) => d.quantidade));
+
+  const corretivaLista = corretivaLinha || [];
+  const corretivaMax = Math.max(1, ...corretivaLista.map((d) => d.percentual));
 
   return (
     <div
@@ -255,23 +266,82 @@ export default function App() {
           )}
         </Panel>
 
-        <Panel icon={Boxes} title="Estoque" tone="steel">
-          <EmptyState mensagem="Aguardando integração com a base de estoque" />
+        <Panel
+          icon={Boxes}
+          title="Estoque"
+          tone="steel"
+          badge={
+            <span
+              className="text-[12.5px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px]"
+              style={{ background: `${COLORS.steel}22`, color: COLORS.steel, border: `1px solid ${COLORS.steel}55` }}
+            >
+              tempo real
+            </span>
+          }
+        >
+          {errorEstoque ? (
+            <EmptyState mensagem={`Falha ao buscar estoque (${errorEstoque})`} />
+          ) : !loadingEstoque && !estoque ? (
+            <EmptyState mensagem="Sem dados de estoque disponíveis" />
+          ) : (
+            <>
+              <div
+                className="text-[14px] uppercase tracking-[0.1em]"
+                style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif", borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 10 }}
+              >
+                Estoque vencido
+              </div>
+              <div className="grid grid-cols-4 gap-4 items-end">
+                <div>
+                  <div className="font-mono font-semibold text-base leading-none" style={{ color: COLORS.text }}>
+                    {estoque ? Math.round(estoque.buckets["30-60"]).toLocaleString("pt-BR") : "—"}
+                  </div>
+                  <div className="mt-1 text-[13px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                    30-60 dias
+                  </div>
+                </div>
+                <div>
+                  <div className="font-mono font-semibold text-base leading-none" style={{ color: COLORS.text }}>
+                    {estoque ? Math.round(estoque.buckets["60-90"]).toLocaleString("pt-BR") : "—"}
+                  </div>
+                  <div className="mt-1 text-[13px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                    60-90 dias
+                  </div>
+                </div>
+                <div>
+                  <div className="font-mono font-semibold text-base leading-none" style={{ color: COLORS.text }}>
+                    {estoque ? Math.round(estoque.buckets[">90"]).toLocaleString("pt-BR") : "—"}
+                  </div>
+                  <div className="mt-1 text-[13px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                    &gt; 90 dias
+                  </div>
+                </div>
+                <div className="pl-2" style={{ borderLeft: `1px solid ${COLORS.borderSoft}` }}>
+                  <div className="font-mono font-bold text-xl leading-none" style={{ color: COLORS.gold }}>
+                    {estoque ? Math.round(estoque.estoque_vencido_total).toLocaleString("pt-BR") : "—"}
+                  </div>
+                  <div className="mt-1 text-[13px] uppercase tracking-[0.08em] font-semibold" style={{ color: COLORS.goldBright, fontFamily: "Oswald, sans-serif" }}>
+                    Total
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </Panel>
 
       <Panel icon={Wrench} title="Manutenção" tone="red">
           {errorCorretiva ? (
             <EmptyState mensagem={`Falha ao buscar corretiva por linha (${errorCorretiva})`} />
-          ) : !loadingCorretiva && (!corretivaLinha || corretivaLinha.length === 0) ? (
+          ) : !loadingCorretiva && corretivaLista.length === 0 ? (
             <EmptyState mensagem="Sem paradas corretivas registradas para essa data" />
           ) : (
             <div className="flex flex-col gap-2.5">
-              {corretivaLinha.map((d) => (
+              {corretivaLista.map((d) => (
                 <BarRow
                   key={d.linha}
                   label={d.linha}
                   value={d.percentual}
-                  max={Math.max(1, ...corretivaLinha.map((x) => x.percentual))}
+                  max={corretivaMax}
                   color={d.percentual >= 30 ? COLORS.red : COLORS.amber}
                   format={(v) => `${v.toFixed(1).replace(".", ",")}%`}
                   flag={d.percentual >= 30 ? "CRÍTICO" : undefined}
