@@ -9,14 +9,17 @@ Endpoint principal:
 """
 from datetime import date, timedelta
 
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
+import io
 
 from database import fetch_base_quantidade, fetch_base_tempo
 from kpis import montar_kpis, debug_breakdown, producao_por_linha, corretiva_por_linha
 from estoque import estoque_vencido
 from ops_abertas import ops_abertas_resumo
 from qualidade import qualidade_resumo
+from pcp import resumo_historico, consolidar_historico
 
 app = FastAPI(title="Dash Diário — Incoflandres API")
 
@@ -105,6 +108,35 @@ def get_qualidade(data: date | None = Query(None)):
     """RNC's em aberto (sempre atual), RNC's no mês (mês da 'data'
     recebida — default hoje) e Fardos retidos (sempre atual)."""
     return qualidade_resumo(data or date.today())
+
+
+@app.get("/api/pcp/historico-programacao")
+def get_historico_programacao():
+    """Consolida todos os CSVs da pasta de rede (histórico de
+    programação do sistema legado) num único relatório. Lê direto da
+    pasta a cada chamada — sem cache por enquanto."""
+    try:
+        return resumo_historico()
+    except (FileNotFoundError, ValueError) as erro:
+        raise HTTPException(status_code=500, detail=str(erro))
+
+
+@app.get("/api/pcp/historico-programacao/csv")
+def download_historico_programacao():
+    """Mesmo relatório consolidado, como arquivo CSV pra baixar."""
+    try:
+        df = consolidar_historico()
+    except (FileNotFoundError, ValueError) as erro:
+        raise HTTPException(status_code=500, detail=str(erro))
+
+    buffer = io.StringIO()
+    df.to_csv(buffer, index=False, sep=";", encoding="utf-8-sig")
+    buffer.seek(0)
+    return StreamingResponse(
+        iter([buffer.getvalue()]),
+        media_type="text/csv",
+        headers={"Content-Disposition": "attachment; filename=historico_programacao_consolidado.csv"},
+    )
 
 
 @app.get("/api/kpis/debug")

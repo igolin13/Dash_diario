@@ -67,3 +67,20 @@ export async function fetchQualidade(date) {
   }
   return resp.json();
 }
+
+/**
+ * Histórico de programação (PCP) — consolidado a partir dos CSVs da
+ * pasta de rede. Sem filtro de data (o backend lê tudo da pasta).
+ */
+export async function fetchHistoricoProgramacao() {
+  const resp = await fetch(`${API_URL}/api/pcp/historico-programacao`);
+  if (!resp.ok) {
+    throw new Error(`API respondeu ${resp.status} em /api/pcp/historico-programacao`);
+  }
+  return resp.json();
+}
+
+/** Dispara o download do CSV consolidado direto no navegador. */
+export function baixarHistoricoProgramacaoCsv() {
+  window.open(`${API_URL}/api/pcp/historico-programacao/csv`, "_blank");
+}
