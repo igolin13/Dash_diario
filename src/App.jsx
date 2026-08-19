@@ -7,7 +7,7 @@ import { Panel } from "./components/Panel";
 import { Stat, EmptyState, BarRow } from "./components/Stat";
 import { FiltroData } from "./components/FiltroData";
 import { useApiResource } from "./hooks/useApiResource";
-import { fetchKpis, fetchProducaoPorLinha, fetchCorretivaPorLinha, fetchEstoqueVencido } from "./lib/api";
+import { fetchKpis, fetchProducaoPorLinha, fetchCorretivaPorLinha, fetchEstoqueVencido, fetchOpsAbertas, fetchQualidade } from "./lib/api";
 
 /* ---------------------------------------------------------
    APP — Dash Diário Incoflandres
@@ -51,6 +51,19 @@ export default function App() {
     error: errorEstoque,
   } = useApiResource(fetchEstoqueVencido, null);
 
+  const {
+    data: opsAbertas,
+    loading: loadingOps,
+    error: errorOps,
+  } = useApiResource(fetchOpsAbertas, null);
+
+  // Qualidade depende da data selecionada (RNC's no mês usa o mês dela).
+  const {
+    data: qualidade,
+    loading: loadingQualidade,
+    error: errorQualidade,
+  } = useApiResource(fetchQualidade, dataSelecionada);
+
   // Conversões pra percentual (a API devolve fração 0-1)
   const oeeValor = data?.oee?.valor != null ? data.oee.valor * 100 : null;
   const oeeMeta = data?.oee?.meta != null ? data.oee.meta * 100 : null;
@@ -73,7 +86,8 @@ export default function App() {
   const impressorasMax = Math.max(1, ...impressoras.map((d) => d.quantidade));
   const envernizadeirasMax = Math.max(1, ...envernizadeiras.map((d) => d.quantidade));
 
-  const corretivaLista = corretivaLinha || [];
+  // Máquinas com 0% ficam fora da lista de Corretiva.
+  const corretivaLista = (corretivaLinha || []).filter((d) => d.percentual > 0);
   const corretivaMax = Math.max(1, ...corretivaLista.map((d) => d.percentual));
 
   return (
@@ -228,11 +242,11 @@ export default function App() {
             <EmptyState mensagem="Sem produção registrada nas linhas ativas para essa data" />
           ) : (
             <>
-              <div>
+              <div className="flex-1 flex flex-col">
                 <div className="text-[14px] uppercase tracking-[0.1em] mb-3" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
                   Impressoras · quantidade produzida
                 </div>
-                <div className="flex flex-col gap-5.5">
+                <div className="flex-1 flex flex-col justify-evenly">
                   {impressoras.map((d) => (
                     <BarRow
                       key={d.linha}
@@ -245,11 +259,11 @@ export default function App() {
                   ))}
                 </div>
               </div>
-              <div style={{ borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 14 }}>
+              <div className="flex-1 flex flex-col" style={{ borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 14 }}>
                 <div className="text-[14px] uppercase tracking-[0.1em] mb-3" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
                   Envernizadeiras · quantidade produzida
                 </div>
-                <div className="flex flex-col gap-5.5">
+                <div className="flex-1 flex flex-col justify-evenly">
                   {envernizadeiras.map((d) => (
                     <BarRow
                       key={d.linha}
@@ -272,7 +286,7 @@ export default function App() {
           tone="steel"
           badge={
             <span
-              className="text-[12.5px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px]"
+              className="text-[13px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px]"
               style={{ background: `${COLORS.steel}22`, color: COLORS.steel, border: `1px solid ${COLORS.steel}55` }}
             >
               tempo real
@@ -286,17 +300,17 @@ export default function App() {
           ) : (
             <>
               <div
-                className="text-[14px] uppercase tracking-[0.1em]"
-                style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif", borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 10 }}
+                className="text-[14.5px] uppercase tracking-[0.1em]"
+                style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif", borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 10 }}
               >
                 Estoque vencido
               </div>
-              <div className="grid grid-cols-4 gap-4 items-end">
+              <div className="grid grid-cols-4 gap-2 items-end">
                 <div>
                   <div className="font-mono font-semibold text-base leading-none" style={{ color: COLORS.text }}>
                     {estoque ? Math.round(estoque.buckets["30-60"]).toLocaleString("pt-BR") : "—"}
                   </div>
-                  <div className="mt-1 text-[13px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                  <div className="mt-1 text-[12px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
                     30-60 dias
                   </div>
                 </div>
@@ -304,7 +318,7 @@ export default function App() {
                   <div className="font-mono font-semibold text-base leading-none" style={{ color: COLORS.text }}>
                     {estoque ? Math.round(estoque.buckets["60-90"]).toLocaleString("pt-BR") : "—"}
                   </div>
-                  <div className="mt-1 text-[13px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                  <div className="mt-1 text-[12px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
                     60-90 dias
                   </div>
                 </div>
@@ -312,7 +326,7 @@ export default function App() {
                   <div className="font-mono font-semibold text-base leading-none" style={{ color: COLORS.text }}>
                     {estoque ? Math.round(estoque.buckets[">90"]).toLocaleString("pt-BR") : "—"}
                   </div>
-                  <div className="mt-1 text-[13px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                  <div className="mt-1 text-[12px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
                     &gt; 90 dias
                   </div>
                 </div>
@@ -320,11 +334,27 @@ export default function App() {
                   <div className="font-mono font-bold text-xl leading-none" style={{ color: COLORS.gold }}>
                     {estoque ? Math.round(estoque.estoque_vencido_total).toLocaleString("pt-BR") : "—"}
                   </div>
-                  <div className="mt-1 text-[13px] uppercase tracking-[0.08em] font-semibold" style={{ color: COLORS.goldBright, fontFamily: "Oswald, sans-serif" }}>
+                  <div className="mt-1 text-[11px] uppercase tracking-[0.08em] font-semibold" style={{ color: COLORS.goldBright, fontFamily: "Oswald, sans-serif" }}>
                     Total
                   </div>
                 </div>
               </div>
+
+              <div
+                className="text-[14.5px] uppercase tracking-[0.1em]"
+                style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif", borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 10 }}
+              >
+                OP's em aberto (+5 dias)
+              </div>
+              {errorOps ? (
+                <p className="text-[10px]" style={{ color: COLORS.red }}>
+                  Falha ao buscar OP's em aberto ({errorOps})
+                </p>
+              ) : (
+                <div className="font-mono font-bold text-xl leading-none" style={{ color: COLORS.text }}>
+                  {!loadingOps && opsAbertas ? opsAbertas.total.toLocaleString("pt-BR") : "—"}
+                </div>
+              )}
             </>
           )}
         </Panel>
@@ -335,7 +365,7 @@ export default function App() {
           ) : !loadingCorretiva && corretivaLista.length === 0 ? (
             <EmptyState mensagem="Sem paradas corretivas registradas para essa data" />
           ) : (
-            <div className="flex flex-col gap-2.5">
+            <div className="flex-1 flex flex-col justify-evenly">
               {corretivaLista.map((d) => (
                 <BarRow
                   key={d.linha}
@@ -351,8 +381,62 @@ export default function App() {
           )}
         </Panel>
 
-        <Panel icon={ShieldCheck} title="Qualidade" tone="gold" className="lg:row-span-2">
-          <EmptyState mensagem="Aguardando integração com o módulo de Qualidade (RNC, fardos retidos)" />
+        <Panel icon={ShieldCheck} title="Qualidade" tone="gold">
+          {errorQualidade ? (
+            <EmptyState mensagem={`Falha ao buscar indicadores de Qualidade (${errorQualidade})`} />
+          ) : !loadingQualidade && !qualidade ? (
+            <EmptyState mensagem="Sem dados de Qualidade disponíveis" />
+          ) : (
+            <>
+              <div
+                className="text-[13px] uppercase tracking-[0.1em]"
+                style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif" }}
+              >
+                Sistema de Gestão da Qualidade
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <div className="font-mono font-bold text-xl leading-none" style={{ color: COLORS.red }}>
+                    {qualidade ? qualidade.rnc_abertas.toLocaleString("pt-BR") : "—"}
+                  </div>
+                  <div className="mt-1 text-[12px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                    RNC's em aberto
+                  </div>
+                  <div className="text-[11px]" style={{ color: COLORS.textFaint }}>
+                    Aguardando resposta
+                  </div>
+                </div>
+                <div className="pl-3" style={{ borderLeft: `1px solid ${COLORS.borderSoft}` }}>
+                  <div className="font-mono font-semibold text-xl leading-none" style={{ color: COLORS.text }}>
+                    {qualidade ? qualidade.rnc_no_mes.toLocaleString("pt-BR") : "—"}
+                  </div>
+                  <div className="mt-1 text-[12px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                    RNC's no mês
+                  </div>
+                  {qualidade?.mes_referencia && (
+                    <div className="text-[11px] capitalize" style={{ color: COLORS.textFaint }}>
+                      {new Date(qualidade.mes_referencia + "-02").toLocaleDateString("pt-BR", { month: "long", year: "numeric" })}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div
+                className="text-[13px] uppercase tracking-[0.1em]"
+                style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif", borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 10 }}
+              >
+                Controle de Qualidade
+              </div>
+              <div>
+                <div className="font-mono font-semibold text-xl leading-none" style={{ color: COLORS.amber }}>
+                  {qualidade ? qualidade.fardos_retidos.toLocaleString("pt-BR") : "—"}
+                </div>
+                <div className="mt-1 text-[12px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                  Fardos retidos
+                </div>
+              </div>
+            </>
+          )}
         </Panel>
 
         <Panel icon={ClipboardList} title="PCP" tone="steel">
@@ -362,8 +446,8 @@ export default function App() {
 
       <div className="flex items-center gap-1.5 justify-center pb-6 opacity-60">
         <Radio size={11} style={{ color: COLORS.textFaint }} />
-        <span className="text-[11px]" style={{ color: COLORS.textFaint }}>
-          CMC & Qualidade · Grupo Incoflandres {loading && "· carregando..."}
+        <span className="text-[12px]" style={{ color: COLORS.textFaint }}>
+          Inteligência de negócios · Grupo Incoflandres {loading && "· carregando..."}
         </span>
       </div>
     </div>

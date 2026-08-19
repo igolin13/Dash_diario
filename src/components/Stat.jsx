@@ -41,7 +41,7 @@ export function BarRow({ label, value, max, format, color, flag }) {
   const pct = Math.max((value / max) * 100, 3);
   return (
     <div className="flex items-center gap-2.5">
-      <span className="w-12 shrink-0 text-[12px] font-medium" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+      <span className="w-12 shrink-0 text-[15px] font-medium" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
         {label}
       </span>
       <div className="flex-1 h-[18px] rounded-[2px] relative" style={{ background: COLORS.borderSoft }}>
@@ -49,7 +49,7 @@ export function BarRow({ label, value, max, format, color, flag }) {
           className="h-full rounded-[2px] flex items-center justify-end px-1.5"
           style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${color}99, ${color})`, minWidth: "38px" }}
         >
-          <span className="font-mono text-[11.5px] font-semibold" style={{ color: "#0A1220" }}>
+          <span className="font-mono text-[12px] font-semibold" style={{ color: "#0A1220" }}>
             {format ? format(value) : value}
           </span>
         </div>

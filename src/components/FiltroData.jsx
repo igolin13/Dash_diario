@@ -33,14 +33,14 @@ export function FiltroData({ dataSelecionada, onMudarData }) {
         className="text-[12.5px] uppercase tracking-wider font-medium px-3 py-1.5 rounded-[2px] transition-colors"
         style={estiloBox(isHoje)}
       >
-        Hoje
+        Dia atual
       </button>
       <button
         onClick={() => onMudarData(ontem)}
         className="text-[12.5px] uppercase tracking-wider font-medium px-3 py-1.5 rounded-[2px] transition-colors"
         style={estiloBox(isOntem)}
       >
-        Ontem
+        Dia anterior
       </button>
       <label
         className="flex items-center gap-1.5 text-[12.5px] px-2.5 py-1.5 rounded-[2px] cursor-pointer font-mono transition-colors"

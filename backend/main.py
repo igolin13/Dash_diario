@@ -15,6 +15,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from database import fetch_base_quantidade, fetch_base_tempo
 from kpis import montar_kpis, debug_breakdown, producao_por_linha, corretiva_por_linha
 from estoque import estoque_vencido
+from ops_abertas import ops_abertas_resumo
+from qualidade import qualidade_resumo
 
 app = FastAPI(title="Dash Diário — Incoflandres API")
 
@@ -86,6 +88,23 @@ def get_estoque_vencido():
     NÃO aceita data_inicio/data_fim — a base de estoque é viva (sem
     histórico por dia), sempre reflete o momento atual."""
     return estoque_vencido()
+
+
+@app.get("/api/ops-abertas")
+def get_ops_abertas():
+    """OP's em aberto (status iniciada/ociosa, terminadas em '01' = PA,
+    atrasadas há >= 5 dias em relação à data de entrega prevista).
+
+    NÃO aceita data_inicio/data_fim — sempre reflete o momento atual
+    (a query usa GETDATE() internamente, igual o painel de Estoque)."""
+    return ops_abertas_resumo()
+
+
+@app.get("/api/qualidade")
+def get_qualidade(data: date | None = Query(None)):
+    """RNC's em aberto (sempre atual), RNC's no mês (mês da 'data'
+    recebida — default hoje) e Fardos retidos (sempre atual)."""
+    return qualidade_resumo(data or date.today())
 
 
 @app.get("/api/kpis/debug")

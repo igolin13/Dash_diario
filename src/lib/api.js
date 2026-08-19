@@ -45,3 +45,25 @@ export async function fetchEstoqueVencido() {
   }
   return resp.json();
 }
+
+/** OP's em aberto — também "vivo", sem filtro de data (usa GETDATE() no SQL). */
+export async function fetchOpsAbertas() {
+  const resp = await fetch(`${API_URL}/api/ops-abertas`);
+  if (!resp.ok) {
+    throw new Error(`API respondeu ${resp.status} em /api/ops-abertas`);
+  }
+  return resp.json();
+}
+
+/**
+ * Qualidade — "RNC's em aberto" e "Fardos retidos" são sempre atuais,
+ * mas "RNC's no mês" depende da data selecionada (mostra o mês dela).
+ */
+export async function fetchQualidade(date) {
+  const dia = formatarDataISO(date);
+  const resp = await fetch(`${API_URL}/api/qualidade?data=${dia}`);
+  if (!resp.ok) {
+    throw new Error(`API respondeu ${resp.status} em /api/qualidade`);
+  }
+  return resp.json();
+}
