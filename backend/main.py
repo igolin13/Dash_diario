@@ -19,7 +19,7 @@ from kpis import montar_kpis, debug_breakdown, producao_por_linha, corretiva_por
 from estoque import estoque_vencido
 from ops_abertas import ops_abertas_resumo
 from qualidade import qualidade_resumo
-from pcp import resumo_historico, consolidar_historico
+from pcp import resumo_historico, consolidar_historico, aderencia_diaria, gerar_resumo_ia
 
 app = FastAPI(title="Dash Diário — Incoflandres API")
 
@@ -137,6 +137,43 @@ def download_historico_programacao():
         media_type="text/csv",
         headers={"Content-Disposition": "attachment; filename=historico_programacao_consolidado.csv"},
     )
+
+
+@app.get("/api/pcp/aderencia")
+def get_aderencia(data: date = Query(...)):
+    """Aderência real do dia: cruza a programação congelada (arquivo
+    de rede mais recente antes da virada do dia) — excluindo OPs
+    reprogramadas depois — com o que realmente rodou (VW_BASE_QUANTIDADE).
+    Útil só pra dias já FECHADOS (ontem pra trás); em tempo real não
+    faz sentido, como o próprio Igor observou."""
+    try:
+        return aderencia_diaria(data)
+    except (FileNotFoundError, ValueError) as erro:
+        raise HTTPException(status_code=500, detail=str(erro))
+
+
+@app.get("/api/pcp/aderencia/resumo")
+def get_aderencia_resumo(data: date = Query(...)):
+    """Mesmo cálculo de /api/pcp/aderencia, mais um resumo em texto
+    gerado pela IA local (Ollama). A IA só narra — nunca calcula — e se
+    ela falhar (rede fora, timeout, modelo indisponível), a resposta
+    ainda volta com os números exatos, só sem o resumo."""
+    try:
+        dados = aderencia_diaria(data)
+    except (FileNotFoundError, ValueError) as erro:
+        raise HTTPException(status_code=500, detail=str(erro))
+
+    if "erro" in dados:
+        raise HTTPException(status_code=404, detail=dados["erro"])
+
+    try:
+        dados["resumo_ia"] = gerar_resumo_ia(dados)
+        dados["resumo_ia_erro"] = None
+    except RuntimeError as erro:
+        dados["resumo_ia"] = None
+        dados["resumo_ia_erro"] = str(erro)
+
+    return dados
 
 
 @app.get("/api/kpis/debug")

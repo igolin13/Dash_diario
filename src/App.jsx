@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Factory, Boxes, ShieldCheck, Wrench, ClipboardList, Radio, AlertCircle, TrendingUp, TrendingDown } from "lucide-react";
+import { Factory, Boxes, ShieldCheck, Wrench, ClipboardList, Radio, AlertCircle, TrendingUp, TrendingDown, Bot } from "lucide-react";
 
 import { COLORS, corPelaMeta } from "./components/colors";
 import { Gauge } from "./components/Gauge";
@@ -7,7 +7,7 @@ import { Panel } from "./components/Panel";
 import { Stat, EmptyState, BarRow } from "./components/Stat";
 import { FiltroData } from "./components/FiltroData";
 import { useApiResource } from "./hooks/useApiResource";
-import { fetchKpis, fetchProducaoPorLinha, fetchCorretivaPorLinha, fetchEstoqueVencido, fetchOpsAbertas, fetchQualidade } from "./lib/api";
+import { fetchKpis, fetchProducaoPorLinha, fetchCorretivaPorLinha, fetchEstoqueVencido, fetchOpsAbertas, fetchQualidade, fetchAderenciaResumo } from "./lib/api";
 
 /* ---------------------------------------------------------
    APP — Dash Diário Incoflandres
@@ -63,6 +63,14 @@ export default function App() {
     loading: loadingQualidade,
     error: errorQualidade,
   } = useApiResource(fetchQualidade, dataSelecionada);
+
+  // Aderência de PCP — só faz sentido pra dias já fechados (o próprio
+  // fetchAderenciaResumo bloqueia hoje/futuro antes de bater na rede).
+  const {
+    data: aderencia,
+    loading: loadingAderencia,
+    error: errorAderencia,
+  } = useApiResource(fetchAderenciaResumo, dataSelecionada);
 
   // Conversões pra percentual (a API devolve fração 0-1)
   const oeeValor = data?.oee?.valor != null ? data.oee.valor * 100 : null;
@@ -286,7 +294,7 @@ export default function App() {
           tone="steel"
           badge={
             <span
-              className="text-[13px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px]"
+              className="text-[9.5px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px]"
               style={{ background: `${COLORS.steel}22`, color: COLORS.steel, border: `1px solid ${COLORS.steel}55` }}
             >
               tempo real
@@ -347,7 +355,7 @@ export default function App() {
                 OP's em aberto (+5 dias)
               </div>
               {errorOps ? (
-                <p className="text-[10px]" style={{ color: COLORS.red }}>
+                <p className="text-[10.5px]" style={{ color: COLORS.red }}>
                   Falha ao buscar OP's em aberto ({errorOps})
                 </p>
               ) : (
@@ -440,7 +448,46 @@ export default function App() {
         </Panel>
 
         <Panel icon={ClipboardList} title="PCP" tone="steel">
-          <EmptyState mensagem="Aguardando integração com o módulo de PCP" />
+          {errorAderencia ? (
+            <EmptyState mensagem={errorAderencia} />
+          ) : !loadingAderencia && !aderencia ? (
+            <EmptyState mensagem="Sem dados de aderência disponíveis" />
+          ) : aderencia?.erro ? (
+            <EmptyState mensagem={aderencia.erro} />
+          ) : (
+            <>
+              <div className="grid grid-cols-2 gap-3">
+                <Stat
+                  label="Aderência de quantidade"
+                  value={aderencia?.aderencia_quantidade != null ? `${(aderencia.aderencia_quantidade * 100).toFixed(1)}%` : null}
+                />
+                <Stat
+                  label="OPs reprogramadas"
+                  value={aderencia?.total_ops_reprogramadas != null ? String(aderencia.total_ops_reprogramadas) : null}
+                  sub={aderencia ? `de ${aderencia.total_ops_planejadas} planejadas` : undefined}
+                />
+              </div>
+              {aderencia?.resumo_ia && (
+                <div style={{ borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 10 }}>
+                  <div
+                    className="flex items-center gap-1.5 text-[9.5px] uppercase tracking-wider mb-1.5"
+                    style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif" }}
+                  >
+                    <Bot size={11} style={{ color: COLORS.textFaint }} />
+                    Análise gerada por assistente virtual
+                  </div>
+                  <p className="text-[11px] leading-relaxed" style={{ color: COLORS.textMuted }}>
+                    {aderencia.resumo_ia}
+                  </p>
+                </div>
+              )}
+              {aderencia?.resumo_ia_erro && (
+                <p className="text-[10px]" style={{ color: COLORS.textFaint }}>
+                  Resumo da IA indisponível ({aderencia.resumo_ia_erro})
+                </p>
+              )}
+            </>
+          )}
         </Panel>
       </div>
 

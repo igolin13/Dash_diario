@@ -52,6 +52,7 @@ _QUERY_RNC_ABERTAS = f"""
       AND QI2_STATUS_DESC IN ('Em análise', 'Registrada')
       AND QI2_SITUAC = 'Não Conformidade Existente'
       AND TIPO_RNC = 'EXTERNO'
+      AND QI2_CODCAT = 'MAIOR'
 """
 
 
@@ -70,6 +71,7 @@ _QUERY_RNC_NO_MES = f"""
       AND QI2_STATUS_DESC IN ('Em análise', 'Procede', 'Registrada')
       AND QI2_SITUAC = 'Não Conformidade Existente'
       AND TIPO_RNC = 'EXTERNO'
+      AND QI2_CODCAT = 'MAIOR'
       AND LEFT(CONVERT(varchar(8), {COLUNA_DATA_RNC}, 112), 6) = :ano_mes
 """
 

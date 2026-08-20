@@ -84,3 +84,22 @@ export async function fetchHistoricoProgramacao() {
 export function baixarHistoricoProgramacaoCsv() {
   window.open(`${API_URL}/api/pcp/historico-programacao/csv`, "_blank");
 }
+
+/**
+ * Aderência real de PCP — só faz sentido pra dias já FECHADOS (ontem
+ * pra trás). Bloqueia ANTES de bater na rede se a data selecionada for
+ * hoje ou futuro, pra não gastar uma chamada à toa.
+ */
+export async function fetchAderenciaResumo(date) {
+  const hoje = new Date();
+  if (formatarDataISO(date) >= formatarDataISO(hoje)) {
+    throw new Error("Aderência só está disponível para dias já fechados (ontem ou anteriores) — hoje ainda está em andamento.");
+  }
+  const dia = formatarDataISO(date);
+  const resp = await fetch(`${API_URL}/api/pcp/aderencia/resumo?data=${dia}`);
+  if (!resp.ok) {
+    const body = await resp.json().catch(() => ({}));
+    throw new Error(body.detail || `API respondeu ${resp.status} em /api/pcp/aderencia/resumo`);
+  }
+  return resp.json();
+}
