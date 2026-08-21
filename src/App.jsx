@@ -234,6 +234,7 @@ export default function App() {
                 value={corretivaValor != null ? `${corretivaValor.toFixed(2).replace(".", ",")}%` : null}
                 color={corretivaValor != null ? corPelaMeta(corretivaValor, corretivaMeta, true) : undefined}
                 sub={corretivaMeta != null ? `meta ≤ ${corretivaMeta.toFixed(0)}%` : undefined}
+                subSize="text-[14px]"
               />
             </div>
           </div>
@@ -318,7 +319,7 @@ export default function App() {
                   <div className="font-mono font-semibold text-base leading-none" style={{ color: COLORS.text }}>
                     {estoque ? Math.round(estoque.buckets["30-60"]).toLocaleString("pt-BR") : "—"}
                   </div>
-                  <div className="mt-1 text-[12px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                  <div className="mt-1 text-[15px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
                     30-60 dias
                   </div>
                 </div>
@@ -326,7 +327,7 @@ export default function App() {
                   <div className="font-mono font-semibold text-base leading-none" style={{ color: COLORS.text }}>
                     {estoque ? Math.round(estoque.buckets["60-90"]).toLocaleString("pt-BR") : "—"}
                   </div>
-                  <div className="mt-1 text-[12px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                  <div className="mt-1 text-[15px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
                     60-90 dias
                   </div>
                 </div>
@@ -334,7 +335,7 @@ export default function App() {
                   <div className="font-mono font-semibold text-base leading-none" style={{ color: COLORS.text }}>
                     {estoque ? Math.round(estoque.buckets[">90"]).toLocaleString("pt-BR") : "—"}
                   </div>
-                  <div className="mt-1 text-[12px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                  <div className="mt-1 text-[15px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
                     &gt; 90 dias
                   </div>
                 </div>
@@ -342,7 +343,7 @@ export default function App() {
                   <div className="font-mono font-bold text-xl leading-none" style={{ color: COLORS.gold }}>
                     {estoque ? Math.round(estoque.estoque_vencido_total).toLocaleString("pt-BR") : "—"}
                   </div>
-                  <div className="mt-1 text-[11px] uppercase tracking-[0.08em] font-semibold" style={{ color: COLORS.goldBright, fontFamily: "Oswald, sans-serif" }}>
+                  <div className="mt-1 text-[14px] uppercase tracking-[0.08em] font-semibold" style={{ color: COLORS.goldBright, fontFamily: "Oswald, sans-serif" }}>
                     Total
                   </div>
                 </div>
@@ -397,32 +398,32 @@ export default function App() {
           ) : (
             <>
               <div
-                className="text-[13px] uppercase tracking-[0.1em]"
+                className="text-[15px] uppercase tracking-[0.1em]"
                 style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif" }}
               >
                 Sistema de Gestão da Qualidade
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <div className="font-mono font-bold text-xl leading-none" style={{ color: COLORS.red }}>
+                  <div className="font-mono font-bold text-3xl leading-none" style={{ color: COLORS.red }}>
                     {qualidade ? qualidade.rnc_abertas.toLocaleString("pt-BR") : "—"}
                   </div>
-                  <div className="mt-1 text-[12px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                  <div className="mt-1 text-[14px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
                     RNC's em aberto
                   </div>
-                  <div className="text-[11px]" style={{ color: COLORS.textFaint }}>
+                  <div className="text-[13px]" style={{ color: COLORS.textFaint }}>
                     Aguardando resposta
                   </div>
                 </div>
                 <div className="pl-3" style={{ borderLeft: `1px solid ${COLORS.borderSoft}` }}>
-                  <div className="font-mono font-semibold text-xl leading-none" style={{ color: COLORS.text }}>
+                  <div className="font-mono font-semibold text-3xl leading-none" style={{ color: COLORS.text }}>
                     {qualidade ? qualidade.rnc_no_mes.toLocaleString("pt-BR") : "—"}
                   </div>
-                  <div className="mt-1 text-[12px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
+                  <div className="mt-1 text-[14px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
                     RNC's no mês
                   </div>
                   {qualidade?.mes_referencia && (
-                    <div className="text-[11px] capitalize" style={{ color: COLORS.textFaint }}>
+                    <div className="text-[13px] capitalize" style={{ color: COLORS.textFaint }}>
                       {new Date(qualidade.mes_referencia + "-02").toLocaleDateString("pt-BR", { month: "long", year: "numeric" })}
                     </div>
                   )}
@@ -430,19 +431,36 @@ export default function App() {
               </div>
 
               <div
-                className="text-[13px] uppercase tracking-[0.1em]"
+                className="text-[15px] uppercase tracking-[0.1em]"
                 style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif", borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 10 }}
               >
-                Controle de Qualidade
+                RNC's em aberto
               </div>
-              <div>
-                <div className="font-mono font-semibold text-xl leading-none" style={{ color: COLORS.amber }}>
-                  {qualidade ? qualidade.fardos_retidos.toLocaleString("pt-BR") : "—"}
+              {qualidade?.rnc_abertas_lista?.length > 0 ? (
+                <div className="flex flex-col gap-2.5 max-h-[260px] overflow-y-auto pr-1">
+                  {qualidade.rnc_abertas_lista.map((rnc, i) => (
+                    <div key={i} style={i > 0 ? { borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 10 } : undefined}>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="font-mono font-bold text-[16px]" style={{ color: COLORS.goldBright }}>
+                          {rnc.fnc}
+                        </span>
+                        {rnc.prazo_resposta && (
+                          <span className="text-[15px]" style={{ color: COLORS.textMuted }}>
+                            Prazo: {rnc.prazo_resposta}
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-[14px]" style={{ color: COLORS.textMuted }}>
+                        {rnc.defeito || "Defeito não informado"}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div className="mt-1 text-[12px] uppercase tracking-[0.08em]" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
-                  Fardos retidos
-                </div>
-              </div>
+              ) : (
+                <p className="text-[14px]" style={{ color: COLORS.textFaint }}>
+                  Nenhuma RNC em aberto.
+                </p>
+              )}
             </>
           )}
         </Panel>
@@ -463,24 +481,24 @@ export default function App() {
             <EmptyState mensagem={aderencia.erro} />
           ) : (
             <>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-4">
                 <Stat
                   label="Aderência de quantidade"
                   value={aderencia?.aderencia_quantidade != null ? `${(aderencia.aderencia_quantidade * 100).toFixed(1)}%` : null}
                 />
                 <Stat
-                  label="OPs que produziram"
+                  label="OPs Produzidas"
                   value={aderencia?.total_ops_produziram != null ? String(aderencia.total_ops_produziram) : null}
-                  sub={aderencia ? `de ${aderencia.total_ops_deveria_produzir} deveriam` : undefined}
+                  sub={aderencia ? ` ${aderencia.total_ops_deveria_produzir} Planejadas` : undefined}
                 />
               </div>
               {aderencia?.resumo_ia && (
-                <div style={{ borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 10 }}>
+                <div style={{ borderTop: `2px solid ${COLORS.borderSoft}`, paddingTop: 10 }}>
                   <div
-                    className="flex items-center gap-1.5 text-[13.5px] uppercase tracking-wider mb-1.5"
+                    className="flex items-center gap-1.5 text-[17px] uppercase tracking-wider mb-1.5"
                     style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif" }}
                   >
-                    <Bot size={24} style={{ color: COLORS.textFaint }} />
+                    <Bot size={15} style={{ color: COLORS.textFaint }} />
                     Análise gerada por assistente virtual
                   </div>
                   <ul className="flex flex-col gap-1">
@@ -492,7 +510,7 @@ export default function App() {
                         const [rotulo, ...resto] = linha.split(":");
                         const valor = resto.join(":").trim();
                         return (
-                          <li key={i} className="text-[14.5px] leading-relaxed flex gap-1.5" style={{ color: COLORS.textMuted }}>
+                          <li key={i} className="text-[14px] leading-relaxed flex gap-1.5" style={{ color: COLORS.textMuted }}>
                             {valor ? (
                               <>
                                 <span style={{ color: COLORS.textFaint }}>{rotulo}:</span>

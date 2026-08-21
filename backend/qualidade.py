@@ -28,6 +28,8 @@ sinalizados aqui pra não silenciar a incerteza:
 Todos os 3 indicadores usam a mesma conexão de estoque.py (schema
 PROTHEUS_PRD).
 """
+import re
+
 import pandas as pd
 from sqlalchemy import text
 
@@ -42,13 +44,7 @@ USAR_QI2_FNC = True  # ⚠️ não confirmado — ver ponto (2) acima
 
 _CONTADOR_RNC = "COUNT(DISTINCT QI2_FNC)" if USAR_QI2_FNC else "COUNT(*)"
 
-
-# ---------- RNC's em aberto (aguardando resposta) ----------
-_QUERY_RNC_ABERTAS = f"""
-    SELECT {_CONTADOR_RNC} AS total
-    FROM dbo.VW_RNC
-    WHERE QI2_FILIAL = :filial
-      AND CONVERT(varchar(4), QI2_ANO) = :ano
+_FILTROS_RNC_ABERTAS = """
       AND QI2_STATUS_DESC IN ('Em análise', 'Registrada')
       AND QI2_SITUAC = 'Não Conformidade Existente'
       AND TIPO_RNC = 'EXTERNO'
@@ -56,10 +52,64 @@ _QUERY_RNC_ABERTAS = f"""
 """
 
 
+def formatar_fnc(valor) -> str:
+    """QI2_FNC vem bruto tipo "000000000532025" — formata como "053/2025"
+    (pega os últimos 7 dígitos e separa 3+4: sequencial + ano)."""
+    if valor is None:
+        return ""
+    digitos = re.sub(r"[^0-9]", "", str(valor))
+    if len(digitos) < 7:
+        return str(valor)
+    ultimos7 = digitos[-7:]
+    return f"{ultimos7[:3]}/{ultimos7[3:]}"
+
+
+# ---------- RNC's em aberto (aguardando resposta) ----------
+_QUERY_RNC_ABERTAS = f"""
+    SELECT {_CONTADOR_RNC} AS total
+    FROM dbo.VW_RNC
+    WHERE QI2_FILIAL = :filial
+      AND CONVERT(varchar(4), QI2_ANO) = :ano
+      {_FILTROS_RNC_ABERTAS}
+"""
+
+
 def rnc_abertas_total() -> int:
     params = {"filial": FILIAL, "ano": ANO}
     df = pd.read_sql(text(_QUERY_RNC_ABERTAS), get_engine_estoque(), params=params)
     return int(df["total"].iloc[0]) if not df.empty else 0
+
+
+# ---------- Lista das RNC's em aberto (pro painel — FNC, defeito, prazo) ----------
+_QUERY_RNC_ABERTAS_LISTA = f"""
+    SELECT DISTINCT QI2_FNC, DESC_CODEFE, QI2_CONPRE
+    FROM dbo.VW_RNC
+    WHERE QI2_FILIAL = :filial
+      AND CONVERT(varchar(4), QI2_ANO) = :ano
+      {_FILTROS_RNC_ABERTAS}
+    ORDER BY QI2_CONPRE
+"""
+
+
+def rnc_abertas_lista() -> list:
+    params = {"filial": FILIAL, "ano": ANO}
+    df = pd.read_sql(text(_QUERY_RNC_ABERTAS_LISTA), get_engine_estoque(), params=params)
+
+    resultado = []
+    for _, row in df.iterrows():
+        prazo = row["QI2_CONPRE"]
+        prazo_str = None
+        if pd.notna(prazo):
+            try:
+                prazo_str = pd.to_datetime(prazo).strftime("%d/%m/%Y")
+            except (ValueError, TypeError):
+                prazo_str = str(prazo)
+        resultado.append({
+            "fnc": formatar_fnc(row["QI2_FNC"]),
+            "defeito": row["DESC_CODEFE"],
+            "prazo_resposta": prazo_str,
+        })
+    return resultado
 
 
 # ---------- RNC's no mês (todas recebidas no mês da data selecionada) ----------
@@ -100,7 +150,7 @@ def fardos_retidos_total() -> int:
 def qualidade_resumo(data_referencia) -> dict:
     return {
         "rnc_abertas": rnc_abertas_total(),
+        "rnc_abertas_lista": rnc_abertas_lista(),
         "rnc_no_mes": rnc_no_mes_total(data_referencia),
-        "fardos_retidos": fardos_retidos_total(),
         "mes_referencia": data_referencia.strftime("%Y-%m"),
     }

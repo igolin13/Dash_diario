@@ -47,6 +47,7 @@ PASTA_HISTORICO = os.getenv(
     r"\\10.147.70.8\Users\Public\Documents\Historico programação",
 )
 REMOVER_DUPLICATAS = True
+MAQUINAS_EXCLUIDAS = {"LINHA DE CORTE V"}  # fora do escopo do projeto (confirmado pelo Igor)
 
 
 def _detectar_delimitador(caminho: Path) -> str:
@@ -230,8 +231,10 @@ def _chave_operacao(df: pd.DataFrame) -> pd.Series:
 def programacao_do_dia(data_alvo, pasta: str = PASTA_HISTORICO) -> pd.DataFrame:
     """Linhas do arquivo congelado cuja SetupStart cai no dia
     `data_alvo` — o arquivo congelado cobre vários dias pra frente,
-    essa função filtra só o dia que interessa."""
+    essa função filtra só o dia que interessa. Já exclui as máquinas
+    fora do escopo (ver MAQUINAS_EXCLUIDAS)."""
     df = programacao_congelada(data_alvo, pasta).copy()
+    df = df[~df["Textbox4"].isin(MAQUINAS_EXCLUIDAS)]
     df["_setup_start_dt"] = _parse_data_hora(df["SetupStart"])
     df["_numero_op"] = df["OrderNo1"].apply(extrair_numero_op)
     df["_passada"] = df["OperationName1"].apply(_numero_passada)
@@ -277,6 +280,7 @@ def verificar_confirmacao(data_alvo, pasta: str = PASTA_HISTORICO) -> pd.DataFra
         return planejado
 
     df_proprio = df_proprio.copy()
+    df_proprio = df_proprio[~df_proprio["Textbox4"].isin(MAQUINAS_EXCLUIDAS)]
     df_proprio["_numero_op"] = df_proprio["OrderNo1"].apply(extrair_numero_op)
     df_proprio["_chave_operacao"] = _chave_operacao(df_proprio)
     df_proprio["_setup_start_dt"] = _parse_data_hora(df_proprio["SetupStart"])

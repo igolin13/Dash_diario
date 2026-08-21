@@ -1,6 +1,6 @@
 import { COLORS } from "./colors";
 
-export function Stat({ label, value, sub, color }) {
+export function Stat({ label, value, sub, color, subSize = "text-[11px]" }) {
   const temValor = value != null && value !== "";
   return (
     <div>
@@ -11,7 +11,7 @@ export function Stat({ label, value, sub, color }) {
         {label}
       </div>
       {sub && (
-        <div className="text-[11px] mt-0.5" style={{ color: COLORS.textFaint }}>
+        <div className={`${subSize} mt-0.5`} style={{ color: COLORS.textFaint }}>
           {sub}
         </div>
       )}
@@ -39,6 +39,13 @@ export function EmptyState({ mensagem = "Aguardando integração com a fonte de 
 /** Barra horizontal pra quantidade produzida por linha (dado real da API). */
 export function BarRow({ label, value, max, format, color, flag }) {
   const pct = Math.max((value / max) * 100, 3);
+  const textoFormatado = format ? format(value) : value;
+  // Só a barra mais alta do grupo (100% — sem espaço sobrando depois
+  // dela) mantém o número por dentro. Todas as outras, mesmo já bem
+  // cheias, mostram o número FORA, na cor da barra — texto escuro por
+  // dentro ficava ilegível quando a barra não preenchia até a borda.
+  const textoFora = pct < 99.5;
+
   return (
     <div className="flex items-center gap-2.5">
       <span className="w-12 shrink-0 text-[15px] font-medium" style={{ color: COLORS.textMuted, fontFamily: "Oswald, sans-serif" }}>
@@ -46,13 +53,15 @@ export function BarRow({ label, value, max, format, color, flag }) {
       </span>
       <div className="flex-1 h-[18px] rounded-[2px] relative" style={{ background: COLORS.borderSoft }}>
         <div
-          className="h-full rounded-[2px] flex items-center justify-end px-1.5"
-          style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${color}99, ${color})`, minWidth: "38px" }}
+          className="h-full rounded-[2px]"
+          style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${color}99, ${color})`, minWidth: "10px" }}
+        />
+        <span
+          className="font-mono text-[12px] font-semibold absolute top-1/2 -translate-y-1/2 whitespace-nowrap"
+          style={textoFora ? { left: `calc(${pct}% + 6px)`, color } : { right: "6px", color: "#0A1220" }}
         >
-          <span className="font-mono text-[12px] font-semibold" style={{ color: "#0A1220" }}>
-            {format ? format(value) : value}
-          </span>
-        </div>
+          {textoFormatado}
+        </span>
       </div>
       {flag && (
         <span
