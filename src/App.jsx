@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Factory, Boxes, ShieldCheck, Wrench, ClipboardList, Radio, AlertCircle, TrendingUp, TrendingDown, Bot } from "lucide-react";
+import { Factory, Boxes, ShieldCheck, Wrench, ClipboardList, Radio, AlertCircle, TrendingUp, TrendingDown, Bot, Loader2 } from "lucide-react";
 
 import { COLORS, corPelaMeta } from "./components/colors";
 import { Gauge } from "./components/Gauge";
@@ -448,9 +448,16 @@ export default function App() {
         </Panel>
 
         <Panel icon={ClipboardList} title="PCP" tone="steel">
-          {errorAderencia ? (
+          {loadingAderencia ? (
+            <div className="flex-1 flex flex-col items-center justify-center gap-2 py-6">
+              <Loader2 size={18} className="animate-spin" style={{ color: COLORS.gold }} />
+              <p className="text-[11px]" style={{ color: COLORS.textFaint }}>
+                Carregando aderência...
+              </p>
+            </div>
+          ) : errorAderencia ? (
             <EmptyState mensagem={errorAderencia} />
-          ) : !loadingAderencia && !aderencia ? (
+          ) : !aderencia ? (
             <EmptyState mensagem="Sem dados de aderência disponíveis" />
           ) : aderencia?.erro ? (
             <EmptyState mensagem={aderencia.erro} />
@@ -462,23 +469,42 @@ export default function App() {
                   value={aderencia?.aderencia_quantidade != null ? `${(aderencia.aderencia_quantidade * 100).toFixed(1)}%` : null}
                 />
                 <Stat
-                  label="OPs reprogramadas"
-                  value={aderencia?.total_ops_reprogramadas != null ? String(aderencia.total_ops_reprogramadas) : null}
-                  sub={aderencia ? `de ${aderencia.total_ops_planejadas} planejadas` : undefined}
+                  label="OPs que produziram"
+                  value={aderencia?.total_ops_produziram != null ? String(aderencia.total_ops_produziram) : null}
+                  sub={aderencia ? `de ${aderencia.total_ops_deveria_produzir} deveriam` : undefined}
                 />
               </div>
               {aderencia?.resumo_ia && (
                 <div style={{ borderTop: `1px solid ${COLORS.borderSoft}`, paddingTop: 10 }}>
                   <div
-                    className="flex items-center gap-1.5 text-[9.5px] uppercase tracking-wider mb-1.5"
+                    className="flex items-center gap-1.5 text-[13.5px] uppercase tracking-wider mb-1.5"
                     style={{ color: COLORS.textFaint, fontFamily: "Oswald, sans-serif" }}
                   >
-                    <Bot size={11} style={{ color: COLORS.textFaint }} />
+                    <Bot size={24} style={{ color: COLORS.textFaint }} />
                     Análise gerada por assistente virtual
                   </div>
-                  <p className="text-[11px] leading-relaxed" style={{ color: COLORS.textMuted }}>
-                    {aderencia.resumo_ia}
-                  </p>
+                  <ul className="flex flex-col gap-1">
+                    {aderencia.resumo_ia
+                      .split("\n")
+                      .map((linha) => linha.trim())
+                      .filter(Boolean)
+                      .map((linha, i) => {
+                        const [rotulo, ...resto] = linha.split(":");
+                        const valor = resto.join(":").trim();
+                        return (
+                          <li key={i} className="text-[14.5px] leading-relaxed flex gap-1.5" style={{ color: COLORS.textMuted }}>
+                            {valor ? (
+                              <>
+                                <span style={{ color: COLORS.textFaint }}>{rotulo}:</span>
+                                <span style={{ color: COLORS.text }}>{valor}</span>
+                              </>
+                            ) : (
+                              linha
+                            )}
+                          </li>
+                        );
+                      })}
+                  </ul>
                 </div>
               )}
               {aderencia?.resumo_ia_erro && (

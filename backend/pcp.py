@@ -239,78 +239,78 @@ def programacao_do_dia(data_alvo, pasta: str = PASTA_HISTORICO) -> pd.DataFrame:
     return df[df["_setup_start_dt"].dt.date == data_alvo].reset_index(drop=True)
 
 
-def verificar_reprogramacao(data_alvo, pasta: str = PASTA_HISTORICO) -> pd.DataFrame:
+def arquivo_do_proprio_dia(data_alvo, pasta: str = PASTA_HISTORICO):
+    """Acha o arquivo cujo ExecutionTime caiu NO PRÓPRIO `data_alvo`
+    (normalmente a exportação das ~17h daquele mesmo dia) — é o
+    "retrato de fechamento" usado só pra confirmar se a programação
+    continua igual, sem olhar nada além dele. Se houver mais de um
+    arquivo nesse dia, pega o mais recente. Retorna (caminho, df) ou
+    (None, None) se ainda não existir (dia ainda não fechou)."""
+    candidatos = [item for item in _info_arquivos_programacao(pasta) if item[1].date() == data_alvo]
+    if not candidatos:
+        return None, None
+    candidatos.sort(key=lambda item: item[1])
+    caminho, _, df = candidatos[-1]
+    return caminho, df
+
+
+def verificar_confirmacao(data_alvo, pasta: str = PASTA_HISTORICO) -> pd.DataFrame:
     """Pra cada OPERAÇÃO planejada pro dia `data_alvo` (OP + passada,
-    segundo o arquivo congelado), verifica se ela CONTINUA aparecendo
-    programada especificamente pra `data_alvo` em algum arquivo gerado
-    DEPOIS do congelado (por ExecutionTime, não data de disco). Só é
-    considerada reprogramada se, em NENHUM arquivo posterior, ela mais
-    aparecer com SetupStart em `data_alvo` — ou seja, avaliamos se ela
-    vai rodar NAQUELE DIA especificamente, não a programação inteira
-    (uma OP pode aparecer de novo em dias futuros na agenda, isso não
-    conta como reprogramação da instância do dia analisado). Compara
-    por operação específica (OP+passada), não pela OP inteira, pra não
-    confundir "reprogramação" com "a OP tem outra passada em outro dia"
-    (normal). Adiciona as colunas "_reprogramada" (booleana) e
-    "_nova_data" (pra onde foi reprogramada, ou None)."""
+    segundo o arquivo congelado do dia ANTERIOR), verifica se ela
+    continua com SetupStart em `data_alvo` no arquivo do PRÓPRIO dia
+    analisado — e só nesse arquivo, sem olhar mais nada além dele (nem
+    pra frente, nem pra trás). Isso limita a checagem a exatamente 2
+    arquivos por análise, em vez de vasculhar a pasta inteira. Compara
+    por operação específica (OP+passada), não pela OP inteira. Adiciona
+    a coluna booleana "_confirmada"."""
     planejado = programacao_do_dia(data_alvo, pasta)
     if planejado.empty:
-        planejado["_reprogramada"] = pd.Series(dtype=bool)
-        planejado["_nova_data"] = pd.Series(dtype=object)
+        planejado["_confirmada"] = pd.Series(dtype=bool)
         return planejado
 
-    caminho_base, _ = arquivo_congelado(data_alvo, pasta)
-    todos = _info_arquivos_programacao(pasta)
-    exec_time_base = next(item[1] for item in todos if item[0] == caminho_base)
-    posteriores = [item for item in todos if item[1] > exec_time_base]
+    _, df_proprio = arquivo_do_proprio_dia(data_alvo, pasta)
+    if df_proprio is None:
+        # ainda não existe o arquivo do próprio dia (dia ainda não fechou) —
+        # não dá pra confirmar nada.
+        planejado = planejado.copy()
+        planejado["_confirmada"] = False
+        return planejado
 
-    confirmada_no_dia = set()  # chaves que CONTINUAM aparecendo em data_alvo em algum posterior
-    ultima_data_vista = {}  # chave -> data mais recente vista (só usado se NÃO confirmada no dia)
-    for _, _, df in posteriores:
-        df = df.copy()
-        df["_numero_op"] = df["OrderNo1"].apply(extrair_numero_op)
-        df["_chave_operacao"] = _chave_operacao(df)
-        df["_setup_start_dt"] = _parse_data_hora(df["SetupStart"])
+    df_proprio = df_proprio.copy()
+    df_proprio["_numero_op"] = df_proprio["OrderNo1"].apply(extrair_numero_op)
+    df_proprio["_chave_operacao"] = _chave_operacao(df_proprio)
+    df_proprio["_setup_start_dt"] = _parse_data_hora(df_proprio["SetupStart"])
 
-        no_dia = df[df["_setup_start_dt"].dt.date == data_alvo]
-        confirmada_no_dia.update(no_dia["_chave_operacao"].unique())
-
-        for chave, grupo in df.groupby("_chave_operacao"):
-            data_max = grupo["_setup_start_dt"].max()
-            if pd.notna(data_max):
-                ultima_data_vista[chave] = data_max
-
-    def nova_data(chave):
-        if chave in confirmada_no_dia:
-            return None  # ainda roda no dia analisado em pelo menos um arquivo posterior — não reprogramada
-        vista_depois = ultima_data_vista.get(chave)
-        if vista_depois is None:
-            return None  # não reapareceu em nenhum arquivo posterior — sem indício de reprogramação
-        return vista_depois.date() if vista_depois.date() != data_alvo else None
+    confirmadas_no_dia = set(df_proprio.loc[df_proprio["_setup_start_dt"].dt.date == data_alvo, "_chave_operacao"])
 
     planejado = planejado.copy()
-    planejado["_nova_data"] = planejado["_chave_operacao"].apply(nova_data)
-    planejado["_reprogramada"] = planejado["_nova_data"].notna()
+    planejado["_confirmada"] = planejado["_chave_operacao"].isin(confirmadas_no_dia)
     return planejado
 
 
 def aderencia_diaria(data_alvo, pasta: str = PASTA_HISTORICO) -> dict:
-    """Aderência real do dia `data_alvo`: cruza o que estava programado
-    no arquivo congelado (excluindo operações reprogramadas depois) com
-    o que realmente rodou, via VW_BASE_QUANTIDADE — casando por
-    (OP, passada), não só pela OP."""
+    """Aderência real do dia `data_alvo`: cruza o que continuava
+    confirmado pro dia (arquivo do dia anterior + arquivo do próprio
+    dia, só esses dois) com o que realmente rodou, via
+    VW_BASE_QUANTIDADE — casando por (OP, passada)."""
     from database import fetch_base_quantidade
 
-    planejado = verificar_reprogramacao(data_alvo, pasta)
+    planejado = verificar_confirmacao(data_alvo, pasta)
     if planejado.empty:
         return {
             "data": data_alvo.isoformat(),
             "erro": "Sem programação encontrada pra esse dia (confira se existe arquivo congelado anterior a ele).",
         }
 
-    nao_reprogramadas = planejado[~planejado["_reprogramada"]].copy()
-    nao_reprogramadas["Quantity"] = pd.to_numeric(nao_reprogramadas["Quantity"], errors="coerce").fillna(0)
-    planejado_agrupado = nao_reprogramadas.groupby(["_numero_op", "_passada"])["Quantity"].sum()
+    confirmadas = planejado[planejado["_confirmada"]].copy()
+    if confirmadas.empty:
+        return {
+            "data": data_alvo.isoformat(),
+            "erro": "Nenhuma operação confirmada pro dia — ou o arquivo do próprio dia ainda não existe, ou tudo mudou de data.",
+        }
+
+    confirmadas["Quantity"] = pd.to_numeric(confirmadas["Quantity"], errors="coerce").fillna(0)
+    planejado_agrupado = confirmadas.groupby(["_numero_op", "_passada"])["Quantity"].sum()
 
     df_real = fetch_base_quantidade(data_alvo, data_alvo)
     df_real["_numero_op"] = df_real["Cód. da Ordem"].apply(extrair_numero_op)
@@ -327,42 +327,29 @@ def aderencia_diaria(data_alvo, pasta: str = PASTA_HISTORICO) -> dict:
             "quantidade_planejada": float(qtd_planejada),
             "quantidade_realizada": qtd_realizada,
             "aderencia": (qtd_realizada / qtd_planejada) if qtd_planejada else None,
-            "rodou": qtd_realizada > 0,
+            "produziu": qtd_realizada > 0,
         })
 
     qtd_planejada_total = float(planejado_agrupado.sum())
     qtd_realizada_total = float(sum(d["quantidade_realizada"] for d in detalhe))
 
-    reprogramadas = planejado[planejado["_reprogramada"]].copy()
-    operacoes_reprogramadas = [
-        {
-            "numero_op": row["_numero_op"],
-            "passada": row["_passada"],
-            "maquina": row.get("Textbox4"),
-            "data_original": data_alvo.isoformat(),
-            "nova_data": row["_nova_data"].isoformat() if pd.notna(row["_nova_data"]) else None,
-        }
-        for _, row in reprogramadas.iterrows()
-    ]
-
-    # Contagens por OP ÚNICA (não por operação/passada) — uma OP com
-    # várias passadas reprogramadas conta como 1 OP reprogramada, não
-    # várias. É isso que aparece no resumo pro usuário.
-    ops_unicas_planejadas = set(planejado["_numero_op"])
-    ops_unicas_reprogramadas = set(reprogramadas["_numero_op"])
-    ops_unicas_que_rodaram = set(d["numero_op"] for d in detalhe if d["rodou"])
+    # Quantas OPs (únicas) deveriam produzir, e quantas de fato produziram algo.
+    ops_deveriam_produzir = set(confirmadas["_numero_op"])
+    ops_produziram = set()
+    for op in ops_deveriam_produzir:
+        passadas_da_op = confirmadas.loc[confirmadas["_numero_op"] == op, "_passada"]
+        total_op = sum(realizado_agrupado.get((op, p), 0.0) for p in passadas_da_op)
+        if total_op > 0:
+            ops_produziram.add(op)
 
     return {
         "data": data_alvo.isoformat(),
-        "total_ops_planejadas": len(ops_unicas_planejadas),
-        "total_ops_reprogramadas": len(ops_unicas_reprogramadas),
-        "total_ops_nao_reprogramadas": len(ops_unicas_planejadas - ops_unicas_reprogramadas),
-        "ops_que_rodaram": len(ops_unicas_que_rodaram),
+        "total_ops_deveria_produzir": len(ops_deveriam_produzir),
+        "total_ops_produziram": len(ops_produziram),
         "quantidade_planejada_total": qtd_planejada_total,
         "quantidade_realizada_total": qtd_realizada_total,
         "aderencia_quantidade": (qtd_realizada_total / qtd_planejada_total) if qtd_planejada_total else None,
         "detalhe_por_op": detalhe,
-        "operacoes_reprogramadas": operacoes_reprogramadas,
     }
 
 
@@ -378,31 +365,23 @@ OLLAMA_TIMEOUT_SEGUNDOS = 30
 def _montar_prompt_resumo(dados: dict) -> str:
     pct = dados.get("aderencia_quantidade")
     pct_str = f"{pct * 100:.1f}%" if pct is not None else "indisponível"
-    piores = sorted(
+    pior = min(
         (d for d in dados.get("detalhe_por_op", []) if d.get("aderencia") is not None),
         key=lambda d: d["aderencia"],
-    )[:2]
-    piores_txt = "; ".join(f"OP {d['numero_op']} passada {d['passada']} ({d['aderencia'] * 100:.0f}%)" for d in piores) or "nenhuma"
+        default=None,
+    )
+    pior_txt = f"OP {pior['numero_op']} passada {pior['passada']} ({pior['aderencia'] * 100:.0f}%)" if pior else "nenhuma"
 
-    reprog = dados.get("operacoes_reprogramadas", [])[:3]
-    reprog_txt = "; ".join(
-        f"OP {r['numero_op']} passada {r['passada']} (de {r['data_original']} para {r['nova_data']})"
-        for r in reprog
-    ) or "nenhuma"
+    return f"""Responda em português do Brasil, EXATAMENTE nesse formato de tópicos, um por linha, sem introdução, sem conclusão, sem texto extra antes ou depois — só copie os valores abaixo pro formato:
 
-    return f"""Você é um analista de PCP industrial. Resuma a aderência de produção do dia {dados['data']} em português do Brasil, em formato de TÓPICOS curtos (bullet points), objetivo e direto — nada de introdução ou conclusão, só os pontos principais. Máximo 4 tópicos, cada um com no máximo 1 frase curta.
+OPs previstas: {dados['total_ops_deveria_produzir']}
+OPs realizadas: {dados['total_ops_produziram']}
+Quantidade prevista: {dados['quantidade_planejada_total']:.0f}
+Quantidade realizada: {dados['quantidade_realizada_total']:.0f}
+Aderência: {pct_str}
+Pior aderência: {pior_txt}
 
-Dados (não invente nenhum número fora destes):
-- OPs planejadas: {dados['total_ops_planejadas']}
-- OPs reprogramadas depois do planejamento (excluídas do cálculo): {dados['total_ops_reprogramadas']}
-- Exemplos de reprogramação: {reprog_txt}
-- OPs que efetivamente rodaram: {dados['ops_que_rodaram']} de {dados['total_ops_nao_reprogramadas']}
-- Quantidade planejada total: {dados['quantidade_planejada_total']:.0f}
-- Quantidade realizada total: {dados['quantidade_realizada_total']:.0f}
-- Aderência de quantidade: {pct_str}
-- OPs com pior aderência: {piores_txt}
-
-Cubra: nível geral de aderência, volume de reprogramações (cite destino se relevante), e a pior OP se houver alguma crítica."""
+Não invente, não arredonde diferente, não adicione nenhuma linha além dessas 6."""
 
 
 def gerar_resumo_ia(dados: dict) -> str:
